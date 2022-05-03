@@ -37,7 +37,7 @@
                 </div>
             </nav>
         </header>
-        <section class="d-flex flex-column my-5 mx-auto p-1 col-10 col-sm-8 col-md-6 col-lg-5 shadow rounded-3 bg-white">
+        <section class="d-flex flex-column my-5 mx-auto p-1 col-12 col-md-11 col-lg-5 shadow rounded-3 bg-white">
             <div class="container-fluid p-2">
                 <div class="row justify-content-center">
                     <figure class="my-5 col-10">

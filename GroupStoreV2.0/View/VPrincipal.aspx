@@ -6,9 +6,18 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap-icons-1.8.1/bootstrap-icons.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="../Content/bootstrap-icons-1.8.1/bootstrap-icons.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <title>Inicio GroupStore</title>
+    <script type="text/javascript">
+        var prueba = document.head.hasAttribute('data-is-postback');
+        if (prueba) {
+
+        } else {
+
+        }
+    </script>
 </head>
 <body>
     <form runat="server">
@@ -19,11 +28,11 @@
                     GroupStore
                 </a>
                 <ul class="nav nav-pills col-12 col-md-5 mb-2 justify-content-center mb-md-0">
-                    <li class="nav-item"><a onserverclick="inicio_ServerClick" runat="server" id="inicio" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a onserverclick="categoria_ServerClick" runat="server" id="categoria" class="nav-link">Categoria</a></li>
-                    <li class="nav-item"><a onserverclick="tiendas_ServerClick" runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
-                    <li class="nav-item"><a onserverclick="proveedores_ServerClick" runat="server" id="proveedores" class="nav-link">Proveedores</a></li>
-                    <li class="nav-item"><a onserverclick="contacto_ServerClick" runat="server" id="contacto" class="nav-link">Contacto</a></li>
+                    <li class="nav-item"><a runat="server" id="inicio" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categoria</a></li>
+                    <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
+                    <li class="nav-item"><a runat="server" id="proveedores" class="nav-link">Proveedores</a></li>
+                    <li class="nav-item"><a runat="server" id="contacto" class="nav-link">Contacto</a></li>
                 </ul>
                 <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-0">
                     <div class="input-group">
@@ -31,14 +40,40 @@
                         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-primary me-2 p-0"><a class="nav-link" href="VInicioSesion.aspx">Iniciar Sesión</a></button>
-                    <button type="button" class="btn btn-primary p-0"><a class="nav-link" href="VRegistro.aspx"><span class="text-white">Registrarse</span></a></button>
-                </div>
+
+                <asp:MultiView ID="MV_Estado" runat="server">
+                    <asp:View runat="server">
+                        <ul class="navbar-nav ms-auto ms-md-0 me-3">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
+                                    <li><a class="dropdown-item" href="VInformacionNegocio.aspx">Ver info. del negocio</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+                                    <li><a class="dropdown-item" runat="server" id="cerrarSesion" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </asp:View>
+                    <asp:View runat="server">
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-primary me-2 p-0"><a class="nav-link" href="VInicioSesion.aspx">Iniciar Sesión</a></button>
+                            <button type="button" class="btn btn-primary p-0"><a class="nav-link" href="VRegistro.aspx"><span class="text-white">Registrarse</span></a></button>
+                        </div>
+                    </asp:View>
+                </asp:MultiView>
+
             </nav>
         </header>
         <section>
-            <img src="../Resources/Pagina/logoGroupStore.jpg" alt="Alternate Text" class="img-fluid"/>
+            <img src="../Resources/Pagina/logoGroupStore.jpg" alt="Alternate Text" class="img-fluid" />
         </section>
         <footer class="py-4 bg-dark  mt-auto">
             <div class="container-fluid px-4">

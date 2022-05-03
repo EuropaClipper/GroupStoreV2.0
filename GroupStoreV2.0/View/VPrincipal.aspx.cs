@@ -9,19 +9,9 @@ public partial class View_VPrincipal : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["usuario"] != null) MV_Estado.ActiveViewIndex = 0;
+        else MV_Estado.ActiveViewIndex = 1;
     }
-    protected void logOut_Click(object sender, EventArgs e)
-    {
-        Session["Usuario"] = null;
-        Response.Redirect("VInicioSesion.aspx");
-    }
-
-    protected void aVerPerfil_ServerClick(object sender, EventArgs e)
-    {
-        //Response.Redirect("VistaUsuario.aspx?user=" + ((Modelo.Miembro)Session["Usuario"]).Usuario);
-    }
-
     protected void categoria_ServerClick(object sender, EventArgs e)
     {
         inicio.Attributes.Add("class", "nav-link");
@@ -68,5 +58,9 @@ public partial class View_VPrincipal : System.Web.UI.Page
         proveedores.Attributes.Add("class", "nav-link");
         contacto.Attributes.Add("class", "nav-link active");
     }
-
+    protected void cerrarSesion_ServerClick(object sender, EventArgs e)
+    {
+        Session["Usuario"] = null;
+        Response.Redirect("VInicioSesion.aspx");
+    }
 }

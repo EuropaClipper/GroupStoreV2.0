@@ -13,21 +13,20 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function vistaPreviaImagenes(input) {
-            if (input.value) {
-                document.getElementById("filaImagenes").setAttribute("class", "row mt-2 d-block");
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        document.getElementsById("img").setAttribute("src", e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }
-
+            let files = input.files;
+            if (files.length > 3) {
+                alert('No se pueden agregar más de 3 imagenes por producto');
             }
-            else
-            {
-                document.getElementById("filaImagenes").setAttribute("class", "row mt-2 d-none");
+            var output = [];
+            let check = true;
+            for (var i = 0, f; f = files[i]; i++) {
+                if (!(f.name.includes(".jpg") || f.name.includes(".jpeg") || f.name.includes(".png"))) check = false;
+                output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                    f.size, ' bytes, última modificación: ',
+                    f.lastModifiedDate.toLocaleDateString(), '</li>');
             }
+            document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+            if (!check) alert('Solo se admiten imagenes .jpg .jpeg y .png');
         }
     </script>
 </head>
@@ -53,8 +52,8 @@
                     </svg>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
-                        <li><a class="dropdown-item" href="VInformacionNegocio.aspx">Ver info. del negocio</a></li>
+                    <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
+                    <li><a class="dropdown-item" href="VInformacionNegocio.aspx">Ver info. del negocio</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -217,6 +216,11 @@
                                                 <i class="bi bi-exclamation-triangle ms-2"></i>
                                                 <i class="ms-5" runat="server" id="MensajeError"></i>
                                             </div>
+                                            <div class="d-none" runat="server" id="errorImagenesExt">
+                                                <i class="bi bi-exclamation-triangle ms-2"></i>
+                                                <i class="ms-5" runat="server" id="errorExtension"></i>
+                                            </div>
+                                            <output class="small" id="list"></output>
                                             <asp:RequiredFieldValidator ID="RFV_FUImagenes" runat="server" ErrorMessage="Seleccione una imagen" ControlToValidate="FU_Imagenes"
                                                 ValidationGroup="VG_AggProducto" Display="Dynamic" CssClass="text-danger ms-2"></asp:RequiredFieldValidator>
                                         </div>
@@ -285,18 +289,6 @@
                                             ValidationGroup="VG_AggProducto" Display="Dynamic" CssClass="text-danger ms-2" ValidationExpression="[A-Za-z0-9 &#%-+*/$]{5,200}"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
-                                <!--si se tiene en el queryString el codigo del producto se cargan las imagenes en este apartado-->
-                                <div class="row mt-2 d-none" runat="server" id="filaImagenes">
-                                    <div class="col">
-                                        <div class="text-center">
-                                            <p class="h4">Vista previa de imagenes cargadas para el producto</p>
-                                        </div>
-                                        <img id="img" runat="server" alt="" class="img-fluid w-25"/>
-                                        <img id="img1" runat="server" alt="" class="img-fluid w-25"/>
-                                        <img id="img2" runat="server" alt="" class="img-fluid w-25"/>
-                                    </div>
-                                </div>
-                                <!---->
                                 <hr />
                                 <div class="row justify-content-center my-4">
                                     <a class="btn btn-danger me-2 col-4" href="VProductos.aspx">Cancelar</a>
