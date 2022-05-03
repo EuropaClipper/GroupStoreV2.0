@@ -34,4 +34,14 @@ public class EProducto
     public string ImagenTres { get; set; }
     [Column("capacidad")]
     public float Capacidad { get; set; }
+    //estas propiedades se usaran para mostrarlas en la gridView de existencias
+    [NotMapped]
+    public int Stock { get; set; }
+    [NotMapped]
+    public int IDBodega { get; set; }
+    [NotMapped]
+    public EBodega Bodega { get { return IDBodega == 0 ? null : new BodegaDAO().obtenerBodega(IDBodega); } set { } }
+    [NotMapped]
+    public float Precio { get; set; }
+
 }

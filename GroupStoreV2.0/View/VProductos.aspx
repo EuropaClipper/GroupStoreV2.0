@@ -160,12 +160,16 @@
                     <hr />
                     <!--GridView con los productos-->
                     <form runat="server">
-                        <asp:GridView ID="GV_Productos" CssClass="table table-hover table-secondary table-striped table-bordered" runat="server" AutoGenerateColumns="false">
+                        <asp:GridView ID="GV_Productos" CssClass="table table-hover table-secondary table-striped table-bordered" runat="server" 
+                            AutoGenerateColumns="false" DataKeyNames="Codigo" OnSelectedIndexChanged="GV_Productos_SelectedIndexChanged" OnRowDataBound="GV_Productos_RowDataBound"
+                            OnRowDeleting="GV_Productos_RowDeleting">
                             <Columns>
                                 <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
+                                 <asp:BoundField HeaderText="Bodega" DataField="Bodega.Nombre" />
                                 <asp:BoundField HeaderText="Producto" DataField="Nombre" />
-                                <asp:BoundField HeaderText="Categoria" DataField="IDCategoria" />
-                                <asp:BoundField HeaderText="Estado" DataField="Estado" />
+                                <asp:BoundField HeaderText="Categoria" DataField="Categoria.categoria" />
+                                <asp:BoundField HeaderText="Stock" DataField="Stock" />
+                                <asp:BoundField HeaderText="Precio" DataField="Precio" />
                                 <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-success bi bi-pencil-square" ItemStyle-Width="50" ShowSelectButton="true" SelectText="" />
                                 <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-danger bi bi-trash3" ItemStyle-Width="50" ShowDeleteButton="true" DeleteText="" />
                             </Columns>
