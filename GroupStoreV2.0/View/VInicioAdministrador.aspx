@@ -36,7 +36,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
-                        <li><a class="dropdown-item" href="VInformacionNegocio.aspx">Ver info. del negocio</a></li>
+                        <li><a class="dropdown-item" href="VInfoNegocio.aspx">Ver info. del negocio</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>

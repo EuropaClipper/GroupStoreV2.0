@@ -10,14 +10,6 @@
     <link href="../Content/bootstrap-icons-1.8.1/bootstrap-icons.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <title>Inicio GroupStore</title>
-    <script type="text/javascript">
-        var prueba = document.head.hasAttribute('data-is-postback');
-        if (prueba) {
-
-        } else {
-
-        }
-    </script>
 </head>
 <body>
     <form runat="server">
@@ -72,7 +64,93 @@
             </nav>
         </header>
         <section>
-            <img src="../Resources/Pagina/logoGroupStore.jpg" alt="Alternate Text" class="img-fluid" />
+            <div class="container">
+        <div id="CarouselProductos" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../Resources/Pagina/logoGroupStore.jpg" class="w-100 rounded-3 shadow" alt="Icono GroupStore" />
+                </div>
+                <div class="carousel-item">
+                    <img src="../Resources/Pagina/logoGroupStore.jpg" class="w-100 rounded-3 shadow" alt="Icono GroupStore" />
+                </div>
+                <div class="carousel-item">
+                    <img src="../Resources/Pagina/logoGroupStore.jpg" class="w-100 rounded-3 shadow" alt="Icono GroupStore" />
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#CarouselProductos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#CarouselProductos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+        <h2>Ofertas</h2>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto 1</h5>
+                        <p class="card-text">Breve descripción del producto.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto 2</h5>
+                        <p class="card-text">Breve descripción del producto.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto 3</h5>
+                        <p class="card-text">Breve descripción del producto.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto 4</h5>
+                        <p class="card-text">Breve descripción del producto.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto 5</h5>
+                        <p class="card-text">Breve descripción del producto.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto 6</h5>
+                        <p class="card-text">Breve descripción del producto.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         </section>
         <footer class="py-4 bg-dark  mt-auto">
             <div class="container-fluid px-4">

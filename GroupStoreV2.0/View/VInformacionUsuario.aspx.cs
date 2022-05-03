@@ -72,4 +72,9 @@ public partial class View_VInformacionUsuario : System.Web.UI.Page
         new UsuarioDAO().actualizarUsuario(usuario);
         this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Datos actualizados');window.location.href=\"VInformacionUsuario.aspx\";</script>");
     }
+    protected void cerrarSesion_ServerClick(object sender, EventArgs e)
+    {
+        Session["Usuario"] = null;
+        Response.Redirect("VInicioSesion.aspx");
+    }
 }
