@@ -289,39 +289,12 @@
                                             ValidationGroup="VG_AggProducto" Display="Dynamic" CssClass="text-danger ms-2" ValidationExpression="[A-Za-z0-9 &#%-+*/$]{5,200}"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
-                                <asp:MultiView ID="MV_Editar" runat="server">
-                                    <asp:View runat="server"></asp:View>
-                                    <asp:View runat="server">
-                                        <div class="row mt-1 px-1 justify-content-center">
-                                            <div class="text-center h6">
-                                                Imagenes del producto
-                                            </div>
-                                            <div class="col-4 mb-1">
-                                                <img src="#" runat="server" id="imagenUno" class="img-fluid rounded-3" alt="1er imagen del producto"/>
-                                            </div>
-                                            <div class="col-4 mb-1">
-                                                <img src="#" runat="server" id="imagenDos" class="img-fluid rounded-3" alt="2da imagen del producto"/>
-                                            </div>
-                                            <div class="col-4 mb-1">
-                                                <img src="#" runat="server" id="imagenTres" class="img-fluid rounded-3" alt="3ra imagen del producto"/>
-                                            </div>
-                                        </div>
-                                    </asp:View>
-                                </asp:MultiView>
                                 <hr />
                                 <div class="row justify-content-center my-4">
                                     <a class="btn btn-danger me-2 col-4" href="VProductos.aspx">Cancelar</a>
-                                    <asp:MultiView ID="MV_BEditar" runat="server">
-                                        <asp:View runat="server">
-                                            <button type="button" class="btn btn-success ms-2 col-4" runat="server" id="btn_aggProducto" onserverclick="btn_aggProducto_ServerClick"
-                                                validationgroup="VG_AggProducto">
-                                                Agregar producto</button>
-                                        </asp:View>
-                                        <asp:View runat="server">
-                                            <button type="button" class="btn btn-primary ms-2 col-4" runat="server" id="btnEditarProducto" onserverclick="btnEditarProducto_ServerClick">
-                                                Editar producto</button>
-                                        </asp:View>
-                                    </asp:MultiView>
+                                    <button type="button" class="btn btn-success ms-2 col-4" runat="server" id="btn_aggProducto" onserverclick="btn_aggProducto_ServerClick"
+                                        validationgroup="VG_AggProducto">
+                                        Agregar producto</button>
                                 </div>
                             </div>
                         </div>

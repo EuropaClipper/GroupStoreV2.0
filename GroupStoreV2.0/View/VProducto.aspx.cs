@@ -20,28 +20,15 @@ public partial class View_VProducto : System.Web.UI.Page
             else
             {
                 pCodigo.InnerText = "El codigo del producto se generará automaticamente";
-                MV_BEditar.ActiveViewIndex = 0;
-                MV_Editar.ActiveViewIndex = 0;
             }
         }
     }
     private void establecerDatos()
     {
-        if(Request.QueryString["b"] == "") Response.Redirect("VProducto.aspx");
         string codigoProducto = Request.QueryString["cp"];
-        string idBodega = Request.QueryString["b"];
         EProducto producto = new ProductoDAO().obtenerProducto(codigoProducto);
-        EExistencias existencia = new ExistenciasDAO().obtenerExistencia(int.Parse(idBodega), codigoProducto);
-        if (producto != null && existencia != null)
+        if(producto != null)
         {
-            //cuando se edite el producto se necesita el precio, stock y idBodega. los asignare aquí
-            producto.Stock = existencia.Cantidad;
-            producto.IDBodega = int.Parse(idBodega);
-            producto.Precio = existencia.PrecioPromedio;
-            //
-            ViewState["producto"] = producto;//variable para tener el producto a mano para hacer la edición
-            MV_BEditar.ActiveViewIndex = 1;
-            MV_Editar.ActiveViewIndex = 1;
             pCodigo.InnerText = "CÓDIGO: " + codigoProducto;
             I_nombreProducto.Value = producto.Nombre;
             I_Descripcion.Value = producto.Descripcion;
@@ -50,17 +37,10 @@ public partial class View_VProducto : System.Web.UI.Page
             I_Capacidad.Value = producto.Capacidad.ToString();
             DDL_Categorias.SelectedValue = producto.IDCategoria.ToString();
             DDL_UMedida.SelectedValue = producto.IDUnidadMedida.ToString();
-            DDL_Bodegas.SelectedValue = idBodega;
-            I_Stock.Value = existencia.Cantidad.ToString();
-            I_Precio.Value = existencia.PrecioPromedio.ToString();
-            imagenUno.Attributes.Add("src", producto.ImagenUno);
-            imagenDos.Attributes.Add("src", producto.ImagenDos);
-            imagenTres.Attributes.Add("src", producto.ImagenTres);
+            List<EExistencias> existencias = new ExistenciasDAO().obtenerExistencias(producto.Codigo);
         }
         else
         {
-            MV_BEditar.ActiveViewIndex = 0;
-            MV_Editar.ActiveViewIndex = 0;
             Response.Redirect("VProducto.aspx");
         }
     }
@@ -173,43 +153,5 @@ public partial class View_VProducto : System.Web.UI.Page
     {
         Session["Usuario"] = null;
         Response.Redirect("VInicioSesion.aspx");
-    }
-
-    protected void btnEditarProducto_ServerClick(object sender, EventArgs e)
-    {
-        bool editado = false;
-        EProducto producto = (EProducto)ViewState["producto"];
-        //si los campos no estan en blanco y no son iguales a lo que yá se tenía se modifica el campo
-        if(I_nombreProducto.Value != "" && I_nombreProducto.Value != producto.Nombre)
-        {
-            producto.Nombre = I_nombreProducto.Value;
-            editado = true;
-        }
-        if(I_cantidadMax.Value != "" && int.Parse(I_cantidadMax.Value) != producto.CantidadMaxima)
-        {
-            producto.CantidadMaxima = int.Parse(I_cantidadMax.Value);
-            editado = true;
-        }
-        if (I_cantidadMin.Value != "" && int.Parse(I_cantidadMin.Value) != producto.CantidadMinima)
-        {
-            producto.CantidadMinima = int.Parse(I_cantidadMin.Value);
-            editado = true;
-        }
-        if (I_Precio.Value != "" && float.Parse(I_Precio.Value) != producto.Precio)
-        {
-            producto.Precio = float.Parse(I_Precio.Value);
-            editado = true;
-        }
-        if (I_Stock.Value != "" && int.Parse(I_Stock.Value) != producto.Stock)
-        {
-            producto.Stock = int.Parse(I_Stock.Value);
-            editado = true;
-        }
-        if (I_Capacidad.Value != "" && float.Parse(I_Capacidad.Value) != producto.Capacidad)
-        {
-            producto.Capacidad = float.Parse(I_Capacidad.Value);
-            editado = true;
-        }
-        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El producto se ha editado correctamente');window.location.href=\"VProductos.aspx\";</script>");
     }
 }
