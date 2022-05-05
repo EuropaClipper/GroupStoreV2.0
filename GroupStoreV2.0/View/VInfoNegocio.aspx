@@ -8,25 +8,16 @@
     <title>Información del Negocio</title>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.min.js"></script>
-    <link href="../Content/styles.css" rel="stylesheet" />
     <link href="../Content/bootstrap-icons-1.8.1/bootstrap-icons.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="py-3 navbar navbar-expand navbar-dark bg-dark position-sticky sticky-top">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
-            </button>
-            <!-- Navbar Search-->
-            <div class="d-none d-md-block ms-auto"></div>
             <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3">
+            <ul class="navbar-nav ms-auto  me-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -35,8 +26,8 @@
                         </svg>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="VInicioAdministrador.aspx">Ir al inicio</a></li>
                         <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
-                        <li><a class="dropdown-item" href="VInfoNegocio.aspx">Ver info. del negocio</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
@@ -84,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <footer class="py-4 bg-light mt-auto">
+        <footer class="py-4 bg-dark mt-auto fixed-bottom">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
                     <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>

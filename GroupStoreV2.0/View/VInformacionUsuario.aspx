@@ -11,37 +11,77 @@
     <title>Perfil de usuario</title>
 </head>
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
-            </button>
-            <!-- Navbar Search-->
-            <div class="d-none d-md-block ms-auto"></div>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
-                        <li><a class="dropdown-item" href="VInfoNegocio.aspx">Ver info. del negocio</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" runat="server" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+    <asp:MultiView ID="MV_NavUsuarios" runat="server">
+        <asp:View runat="server">
+            <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark position-sticky sticky-top py-4 mb-5">
+                <!-- Navbar Brand-->
+                <a class="navbar-brand text-light" href="VPrincipal.aspx">
+                    <i class="bi bi-shop-window"></i>
+                    GroupStore
+                </a>
+                <div class="container">
+                    <div class="row w-100">
+                        <ul class="nav nav-pills col-12 col-md-8 mb-2 justify-content-center mx-auto">
+                            <li class="nav-item"><a runat="server" id="inicio" class="nav-link" href="VPrincipal.aspx">Inicio</a></li>
+                            <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categorias</a></li>
+                            <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
+                        </ul>
+                        <div class="col-12 col-md-4 ms-auto me-0">
+                            <div class="input-group mt-1">
+                                <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
+                                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navbar-->
+                <ul class="navbar-nav ms-auto me-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="VPrincipal.aspx">Ir a inicio</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" runat="server" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </asp:View>
+        <asp:View runat="server">
+            <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
+                <!-- Navbar Brand-->
+                <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
+                <!-- Navbar Search-->
+                <div class="d-none d-md-block ms-auto"></div>
+                <!-- Navbar-->
+                <ul class="navbar-nav ms-auto ms-md-0 me-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+                            <li><a class="dropdown-item" href="VInicioAdministrador.aspx">Ir a inicio</a></li>
+                            <li><a class="dropdown-item" href="VInfoNegocio.aspx">Ver info. del negocio</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" runat="server" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </asp:View>
+    </asp:MultiView>
     <form runat="server" class="d-flex flex-column my-5 mx-auto col-11 col-md-10 col-lg-8 shadow rounded-3 bg-white">
         <div class="container-fluid px-md-5 py-3">
             <div class="text-center">
@@ -75,7 +115,8 @@
                     </div>
                 </div>
             </div>
-            <asp:MultiView ID="MV_Usuarios" runat="server"><!-- 0.usuarios 1.administrador-->
+            <asp:MultiView ID="MV_Usuarios" runat="server">
+                <!-- 0.usuarios 1.administrador-->
                 <asp:View ID="V_Usuarios" runat="server">
                     <div class="row mt-2">
                         <div class="col-12 col-lg-6">
@@ -91,7 +132,8 @@
                             </div>
                         </div>
                     </div>
-                    <asp:MultiView ID="MV_CompProv" runat="server"><!-- 0.comprador 1.proveedor-->
+                    <asp:MultiView ID="MV_CompProv" runat="server">
+                        <!-- 0.comprador 1.proveedor-->
                         <asp:View ID="V_Comprador" runat="server"></asp:View>
                         <asp:View ID="V_Proveedor" runat="server">
                             <div class="row mt-2">
@@ -257,17 +299,17 @@
             <!---->
         </div>
     </form>
-    <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>
-                    <div>
-                        <a href="#">Politica de privacidad</a>
-                        &middot;
+    <footer class="py-4 bg-dark mt-auto fixed-bottom">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>
+                <div>
+                    <a href="#">Politica de privacidad</a>
+                    &middot;
                                 <a href="#">Terminos &amp; Condiciones</a>
-                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 </body>
 </html>

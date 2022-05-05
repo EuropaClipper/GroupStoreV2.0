@@ -13,6 +13,8 @@ public partial class View_VInformacionUsuario : System.Web.UI.Page
         if (!IsPostBack)
         {
             EUsuario usuario = new UsuarioDAO().ObtenerUsuarios().Where(x => x.Cedula.Equals(((EUsuario)Session["usuario"]).Cedula)).FirstOrDefault();
+            if (usuario.Rol.Rol.Equals("Administrador")) MV_NavUsuarios.ActiveViewIndex = 1;
+            else MV_NavUsuarios.ActiveViewIndex = 0;
             cedula.Value = usuario.Cedula;
             cdl2.Value = usuario.Cedula;
             nombre.Value = usuario.Nombres;

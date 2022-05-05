@@ -210,6 +210,7 @@ public partial class View_VProducto : System.Web.UI.Page
             producto.Capacidad = float.Parse(I_Capacidad.Value);
             editado = true;
         }
+        //if(i_)
         this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El producto se ha editado correctamente');window.location.href=\"VProductos.aspx\";</script>");
     }
 }

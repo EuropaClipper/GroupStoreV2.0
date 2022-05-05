@@ -12,31 +12,32 @@
 </head>
 <body>
     <form runat="server">
-        <header class="p-3 bg-dark text-white">
-            <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between pb-2 mb-4 border-bottom bg-dark">
-                <a class="navbar-brand text-light" href="VPrincipal.aspx">
-                    <i class="bi bi-shop-window"></i>
-                    GroupStore
-                </a>
-                <ul class="nav nav-pills col-12 col-md-5 mb-2 justify-content-center mb-md-0">
-                    <li class="nav-item"><a runat="server" id="inicio" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categoria</a></li>
-                    <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
-                    <li class="nav-item"><a runat="server" id="proveedores" class="nav-link">Proveedores</a></li>
-                    <li class="nav-item"><a runat="server" id="contacto" class="nav-link">Contacto</a></li>
-                </ul>
-                <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-0">
-                    <div class="input-group">
-                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
-                        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark position-sticky sticky-top py-4 mb-5">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand text-light d-none d-md-block ms-2 me-0" href="VPrincipal.aspx">
+                <i class="bi bi-shop-window"></i>
+                GroupStore
+            </a>
+            <div class="container">
+                <div class="row w-100 justify-content-end p-0 m-0">
+                    <div class="col-12 col-lg-7 ">
+                        <ul class="nav nav-pills justify-content-center ">
+                            <li class="nav-item"><a runat="server" id="A4" class="nav-link" href="VPrincipal.aspx">Inicio</a></li>
+                            <li class="nav-item"><a runat="server" id="A1" class="nav-link">Categorias</a></li>
+                            <li class="nav-item"><a runat="server" id="A2" class="nav-link">Tiendas</a></li>
+                            <li class="nav-item"><a runat="server" id="A3" class="nav-link">Proveedores</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="input-group ">
+                            <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
+                            <button class="btn btn-primary" id="btnNavbarSearch1" type="button"><i class="bi bi-search"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-primary me-2 p-0"><a class="nav-link" href="VInicioSesion.aspx">Iniciar Sesión</a></button>
-                    <button type="button" class="btn btn-primary p-0"><a class="nav-link" href="VRegistro.aspx"><span class="text-white">Registrarse</span></a></button>
-                </div>
-            </nav>
-        </header>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-primary p-0 me-2"><a class="nav-link" href="VInicioSesion.aspx"><span class="text-white">Iniciar sesión</span></a></button>
+        </nav>
         <div class="container-fluid my-3 justify-content-center">
             <div class="row">
                 <!--Imagen que se oculta-->
