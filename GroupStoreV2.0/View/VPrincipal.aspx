@@ -64,93 +64,128 @@
             </nav>
         </header>
         <section>
+            <div id="CarouselBanner" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#CarouselBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#CarouselBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#CarouselBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../Resources/ImagenesCargadas/Ofertas.png" class="d-block w-100" alt="..." height="350" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../Resources/ImagenesCargadas/Nestle.png" class="d-block w-100" alt="..." height="350" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../Resources/ImagenesCargadas/Aseo.jpg" class="d-block w-100" alt="..." height="350" />
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#CarouselBanner" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#CarouselBanner" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <br />
+            <br />
+            <br />
             <div class="container">
-        <div id="CarouselProductos" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../Resources/Pagina/logoGroupStore.jpg" class="w-100 rounded-3 shadow" alt="Icono GroupStore" />
-                </div>
-                <div class="carousel-item">
-                    <img src="../Resources/Pagina/logoGroupStore.jpg" class="w-100 rounded-3 shadow" alt="Icono GroupStore" />
-                </div>
-                <div class="carousel-item">
-                    <img src="../Resources/Pagina/logoGroupStore.jpg" class="w-100 rounded-3 shadow" alt="Icono GroupStore" />
-                </div>
+                <h4 >Nuevos Productos</h4>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#CarouselProductos" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#CarouselProductos" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-    <br />
-    <br />
-    <div class="container">
-        <h2>Ofertas</h2>
-    </div>
-    <br />
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 1</h5>
-                        <p class="card-text">Breve descripción del producto.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div id="CarouselProductos" class="carousel slide" data-bs-ride="carousel" style="background:#DDDDFF">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#CarouselProductos" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#CarouselProductos" data-bs-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <img src="" runat="server" id="img1" class="card-img-top" alt="Producto"  width="100" height="200" />
+                                        <div class="card-body">
+                                            <h5 class="card-title" runat="server" id="pr1">Titulo de la card</h5>
+                                            <p runat="server" id="dsc1"></p>
+                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <img src="" runat="server" id="img2" class="card-img-top" alt="Producto"  width="10" height="200" />
+                                        <div class="card-body">
+                                            <h5 class="card-title" runat="server" id="pr2">Titulo de la card</h5>
+                                            <p runat="server" id="dsc2"></p>
+                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <img src="" runat="server" id="img3" class="card-img-top" alt="Producto" width="100" height="200" />
+                                        <div class="card-body">
+                                            <h5 class="card-title" runat="server" id="pr3">Titulo de la card</h5>
+                                            <p runat="server" id="dsc3"></p>
+                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <img src="" runat="server" id="img4" class="card-img-top" alt="Producto" width="100" height="200" />
+                                        <div class="card-body">
+                                            <h5 class="card-title" runat="server" id="pr4">Titulo de la card</h5>
+                                            <p runat="server" id="dsc4"></p>
+                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <img src="" runat="server" id="img5" class="card-img-top" alt="Producto" width="100" height="200" />
+                                        <div class="card-body">
+                                            <h5 class="card-title" runat="server" id="pr5">Titulo de la card</h5>
+                                            <p runat="server" id="dsc5"></p>
+                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card">
+                                        <img src="" runat="server" id="img6" class="card-img-top" alt="Producto" width="100" height="200" />
+                                        <div class="card-body">
+                                            <h5 class="card-title" runat="server" id="pr6">Titulo de la card</h5>
+                                            <p runat="server" id="dsc6"></p>
+                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#CarouselProductos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#CarouselProductos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 2</h5>
-                        <p class="card-text">Breve descripción del producto.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 3</h5>
-                        <p class="card-text">Breve descripción del producto.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 4</h5>
-                        <p class="card-text">Breve descripción del producto.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 5</h5>
-                        <p class="card-text">Breve descripción del producto.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 6</h5>
-                        <p class="card-text">Breve descripción del producto.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            <br />
+            <br />
         </section>
         <footer class="py-4 bg-dark  mt-auto">
             <div class="container-fluid px-4">
