@@ -92,12 +92,12 @@ public partial class View_VProducto : System.Web.UI.Page
         DDL_UMedida.DataBind();
         //
     }
-
     protected void btn_aggProducto_ServerClick(object sender, EventArgs e)
     {
         string[] imagenes = new string[3];
         if(FU_Imagenes.PostedFiles.Count() > 3)
         {
+            errorImagenes.Attributes.Add("class", "alert alert-danger d-block mt-1 p-1");
             MensajeError.InnerText = "Solo puede cargar 3 imagenes por producto.";
             return;
         }
@@ -210,7 +210,79 @@ public partial class View_VProducto : System.Web.UI.Page
             producto.Capacidad = float.Parse(I_Capacidad.Value);
             editado = true;
         }
-        //if(i_)
-        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El producto se ha editado correctamente');window.location.href=\"VProductos.aspx\";</script>");
+        if(DDL_UMedida.SelectedValue != "0" && DDL_UMedida.SelectedValue != producto.IDUnidadMedida.ToString())
+        {
+            producto.IDUnidadMedida = int.Parse(DDL_UMedida.SelectedValue);
+            editado = true;
+        }
+        if (DDL_Categorias.SelectedValue != "0" && DDL_Categorias.SelectedValue != producto.IDCategoria.ToString())
+        {
+            producto.IDCategoria = int.Parse(DDL_Categorias.SelectedValue);
+            editado = true;
+        }
+        if (DDL_Bodegas.SelectedValue != "0" && DDL_Bodegas.SelectedValue != producto.IDBodega.ToString())
+        {
+            producto.IDBodega = int.Parse(DDL_Bodegas.SelectedValue);
+            editado = true;
+        }
+        if (FU_Imagenes.HasFiles)
+        {
+            int i = 0;
+            string[] imagenes = new string[3];
+            if (FU_Imagenes.PostedFiles.Count() > 3)
+            {
+                errorImagenes.Attributes.Add("class", "alert alert-danger d-block mt-1 p-1");
+                MensajeError.InnerText = "Solo puede cargar 3 imagenes por producto.";
+                return;
+            }
+            else
+            {
+                foreach (HttpPostedFile file in FU_Imagenes.PostedFiles)
+                {
+                    string extension = System.IO.Path.GetExtension(file.FileName);
+                    if (!(extension.Equals(".jpg") || extension.Equals(".png") || extension.Equals(".jpeg")))
+                    {
+                        errorImagenes.Attributes.Add("class", "alert alert-danger d-block mt-1 p-1");
+                        MensajeError.InnerText = "Solo se admiten imagenes jpg, jpeg y png";
+                        return;
+                    }
+                    else
+                    {
+                        errorImagenes.Attributes.Add("class", "d-none");
+                        var guid = Guid.NewGuid();
+                        string ruta = "~\\Resources\\ImagenesCargadas\\" + guid + extension;
+                        imagenes[i] = ruta;
+                        file.SaveAs(Server.MapPath(ruta));
+                        i++;
+                    }
+                }
+            }
+            switch (i)
+            {
+                case 1:
+                    producto.ImagenUno = imagenes[0];
+                    break;
+                case 2:
+                    producto.ImagenUno = imagenes[0];
+                    producto.ImagenDos = imagenes[1];
+                    break;
+                case 3:
+                    producto.ImagenUno = imagenes[0];
+                    producto.ImagenDos = imagenes[1];
+                    producto.ImagenTres = imagenes[2];
+                    break;
+            }
+            editado = true;
+        }
+        if (editado)
+        {
+            new ProductoDAO().actualizarProducto(producto);
+            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El producto se ha editado correctamente');window.location.href=\"VProducto.aspx?cp="+producto.Codigo
+                +"&b="+producto.IDBodega+"\";</script>");
+        }
+        else
+        {
+            return;
+        }
     }
 }

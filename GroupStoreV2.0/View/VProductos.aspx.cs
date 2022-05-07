@@ -13,6 +13,10 @@ public partial class View_VProductos : System.Web.UI.Page
         {
             Response.Redirect("VInicioSesion.aspx");
         }
+        if(!IsPostBack)cargarProductos();
+    }
+    private void cargarProductos()
+    {
         EUsuario usuarioRegistrado = (EUsuario)Session["usuario"];
         EUsuarioNegocio relacionUsuarioNegocio = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
         List<EBodega> bodegas = new BodegaDAO().obtenerBodegas(relacionUsuarioNegocio.NITNegocio);
@@ -45,8 +49,8 @@ public partial class View_VProductos : System.Web.UI.Page
     protected void GV_Productos_SelectedIndexChanged(object sender, EventArgs e)
     {
         GridViewRow row = GV_Productos.SelectedRow;
-        int idBodega = ((List<EBodega>)ViewState["bodegas"]).Find(x => x.Nombre.Equals(row.Cells[1].Text)).ID;
-        Response.Redirect("VProducto.aspx" + "?cp=" + row.Cells[0].Text + "&" + "b=" + idBodega);
+        int idBodega = ((List<EBodega>)ViewState["bodegas"]).Find(x => x.Nombre.Equals(row.Cells[2].Text)).ID;
+        Response.Redirect("VProducto.aspx" + "?cp=" + row.Cells[1].Text + "&" + "b=" + idBodega);
     }
 
     protected void GV_Productos_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -54,13 +58,31 @@ public partial class View_VProductos : System.Web.UI.Page
         EProducto producto = (EProducto)e.Row.DataItem;
         if (producto != null)
         {
-            float precio = float.Parse(e.Row.Cells[5].Text);
-            e.Row.Cells[5].Text = precio.ToString("C2");
+            e.Row.Cells[6].Text = producto.Precio.ToString("C2");
+            if (producto.Estado)
+            {
+                e.Row.Cells[7].Text = "Activo";
+            }
+            else
+            {
+                e.Row.Cells[7].Text = "Inactivo";
+            }
         }
     }
 
     protected void GV_Productos_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-
+        string codigo = e.Keys[0].ToString();
+        EProducto producto = new ProductoDAO().obtenerProducto(codigo);
+        if (producto.Estado)
+        {
+            producto.Estado = false;
+        }
+        else
+        {
+            producto.Estado = true;
+        }
+        new ProductoDAO().actualizarProducto(producto);
+        cargarProductos();
     }
 }

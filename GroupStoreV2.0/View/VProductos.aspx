@@ -142,7 +142,7 @@
         </div>
         <div id="layoutSidenav_content">
             <main class="px-1">
-                <div class="container-fluid col-12 col-md-12 col-lg-10 mt-4 bg-secondary bg-opacity-10 shadow rounded-3 pt-1 pb-2">
+                <div class="container-fluid col-12 col-md-12 col-lg-11 mt-4 bg-secondary bg-opacity-10 shadow rounded-3 pt-1 pb-2">
                     <div class="d-flex flex-row">
                         <span class="h2">Productos</span>
                         <button
@@ -164,14 +164,15 @@
                             AutoGenerateColumns="false" DataKeyNames="Codigo" OnSelectedIndexChanged="GV_Productos_SelectedIndexChanged" OnRowDataBound="GV_Productos_RowDataBound"
                             OnRowDeleting="GV_Productos_RowDeleting">
                             <Columns>
+                                <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-success bi bi-pencil-square" ItemStyle-Width="50" ShowSelectButton="true" SelectText="" />
                                 <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
-                                 <asp:BoundField HeaderText="Bodega" DataField="Bodega.Nombre" />
+                                <asp:BoundField HeaderText="Bodega" DataField="Bodega.Nombre" />
                                 <asp:BoundField HeaderText="Producto" DataField="Nombre" />
                                 <asp:BoundField HeaderText="Categoria" DataField="Categoria.categoria" />
                                 <asp:BoundField HeaderText="Stock" DataField="Stock" />
                                 <asp:BoundField HeaderText="Precio" DataField="Precio" />
-                                <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-success bi bi-pencil-square" ItemStyle-Width="50" ShowSelectButton="true" SelectText="" />
-                                <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-danger bi bi-trash3" ItemStyle-Width="50" ShowDeleteButton="true" DeleteText="" />
+                                <asp:BoundField HeaderText="Estado"/>
+                                <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-danger bi bi-toggles" ItemStyle-Width="50" ShowDeleteButton="true" DeleteText="" />
                             </Columns>
                             <EmptyDataTemplate>
                                 <div class="text-center">
@@ -183,7 +184,7 @@
                     <!---->
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
+            <footer class="py-4 bg-dark mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>

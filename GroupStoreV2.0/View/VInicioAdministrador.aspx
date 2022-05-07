@@ -62,7 +62,7 @@
                             </a>
                             <!---->
                             <!--Sección bodega-->
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="VBodegas.aspx">
                                 <div class="sb-nav-link-icon"><i class="bi bi-shop"></i></div>
                                 Bodegas
                             </a>
@@ -189,7 +189,7 @@
                         </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>
