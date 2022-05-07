@@ -13,7 +13,7 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
         <!-- Sidebar Toggle-->
@@ -160,7 +160,7 @@
                     <hr />
                     <!--GridView con los productos-->
                     <form runat="server">
-                        <asp:GridView ID="GV_Productos" CssClass="table table-hover table-secondary table-striped table-bordered" runat="server" 
+                        <asp:GridView ID="GV_Productos" CssClass="table table-hover table-secondary table-striped table-bordered table-responsive" runat="server" 
                             AutoGenerateColumns="false" DataKeyNames="Codigo" OnSelectedIndexChanged="GV_Productos_SelectedIndexChanged" OnRowDataBound="GV_Productos_RowDataBound"
                             OnRowDeleting="GV_Productos_RowDeleting">
                             <Columns>

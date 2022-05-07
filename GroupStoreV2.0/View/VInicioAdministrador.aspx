@@ -14,7 +14,7 @@
 </head>
 <body id="body">
     <form runat="server">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
             <!-- Sidebar Toggle-->
