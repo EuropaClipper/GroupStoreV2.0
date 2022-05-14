@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="VProductos.aspx.cs" Inherits="View_VProductos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="VHistorialCompra.aspx.cs" Inherits="View_VHistorialCompra" %>
 
 <!DOCTYPE html>
 
@@ -34,8 +34,8 @@
                     </svg>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
-                        <li><a class="dropdown-item" href="VInfoNegocio.aspx">Ver info. del negocio</a></li>
+                    <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
+                    <li><a class="dropdown-item" href="VInfoNegocio.aspx">Ver info. del negocio</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -142,47 +142,31 @@
         </div>
         <div id="layoutSidenav_content">
             <main class="px-1">
-                <div class="container-fluid col-12 col-md-12 col-lg-11 mt-4 bg-secondary bg-opacity-10 shadow rounded-3 pt-1 pb-2">
-                    <div class="d-flex flex-row">
-                        <span class="h2">Productos</span>
-                        <button
-                            type="button"
-                            class="btn bg-transparent ms-auto me-0"
-                            runat="server"
-                            id="btnAgregarProducto"
-                            onserverclick="btnAgregarProducto_ServerClick">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <hr />
-                    <!--GridView con los productos-->
-                    <form runat="server">
-                        <asp:GridView ID="GV_Productos" CssClass="table table-hover table-secondary table-striped table-bordered table-responsive" runat="server" 
-                            AutoGenerateColumns="false" DataKeyNames="Codigo" OnSelectedIndexChanged="GV_Productos_SelectedIndexChanged" OnRowDataBound="GV_Productos_RowDataBound"
-                            OnRowDeleting="GV_Productos_RowDeleting">
+                <form id="form1" runat="server">
+                    <div id="container-fluid col-12 col-md-12 col-lg-11 mt-4 bg-secondary bg-opacity-10 shadow rounded-3 pt-1 pb-2">
+                        <div class="d-flex flex-row">
+                            <span class="h2">Historial de Compras</span>
+                        </div>
+                        <hr />
+                        <asp:GridView ID="GV_Compras" runat="server" AutoGenerateColumns="False" CssClass="table table-hover table-secondary table-striped table-bordered table-responsive" DataKeyNames="ID">
                             <Columns>
-                                <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-success bi bi-pencil-square" ItemStyle-Width="50" ShowSelectButton="true" SelectText="" />
-                                <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
-                                <asp:BoundField HeaderText="Bodega" DataField="Bodega.Nombre" />
-                                <asp:BoundField HeaderText="Producto" DataField="Nombre" />
-                                <asp:BoundField HeaderText="Categoria" DataField="Categoria.categoria" />
-                                <asp:BoundField HeaderText="Stock" DataField="Stock" />
-                                <asp:BoundField HeaderText="Precio" DataField="Precio" />
-                                <asp:BoundField HeaderText="Estado"/>
-                                <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-danger bi bi-toggles" ItemStyle-Width="50" ShowDeleteButton="true" DeleteText="" />
+                                <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-success bi bi-eye" ItemStyle-Width="50" ShowSelectButton="true" SelectText="" />
+                                <asp:BoundField DataField="ID" HeaderText="Id" />
+                                <asp:BoundField DataField="CedulaUsuario" HeaderText="Cédula del Administrador" />
+                                <asp:BoundField DataField="NITNegocio" HeaderText="Cédula del Proveedor" />
+                                <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
+                                <asp:BoundField DataField="Dia" HeaderText="Día" />
+                                <asp:BoundField DataField="Mes" HeaderText="Mes" />
+                                <asp:BoundField DataField="Anho" HeaderText="Año" />
                             </Columns>
                             <EmptyDataTemplate>
                                 <div class="text-center">
-                                    <p>No se han registrado productos.</p>
+                                    <p>No se ha realizado ninguna compra</p>
                                 </div>
                             </EmptyDataTemplate>
                         </asp:GridView>
-                    </form>
-                    <!---->
-                </div>
+                    </div>
+                </form>
             </main>
             <footer class="py-4 bg-dark mt-auto">
                 <div class="container-fluid px-4">

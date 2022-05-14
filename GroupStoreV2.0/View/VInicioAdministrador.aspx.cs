@@ -9,7 +9,7 @@ public partial class View_VInicioAdministrador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
- 
+
     }
 
     protected void cerrarSesion_ServerClick(object sender, EventArgs e)

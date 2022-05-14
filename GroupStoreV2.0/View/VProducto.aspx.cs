@@ -67,8 +67,16 @@ public partial class View_VProducto : System.Web.UI.Page
     private void cargarDatos()
     {
         //llenar la dropdown list con las bodegas que tiene el negocio
-        ViewState["relacionUsuarioNegocio"] = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(((EUsuario)Session["usuario"]).Cedula);
-        List<EBodega> bodegas = new BodegaDAO().obtenerBodegas(((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio).OrderBy(x=> x.Nombre).ToList();
+        List<EBodega> bodegas = new List<EBodega>();
+        if (((EUsuario)Session["usuario"]).Rol.Rol == "Administrador")
+        {
+            ViewState["relacionUsuarioNegocio"] = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(((EUsuario)Session["usuario"]).Cedula);
+            bodegas = new BodegaDAO().obtenerBodegas(((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio).OrderBy(x => x.Nombre).ToList();
+        }
+        else
+        {
+            bodegas = new BodegaDAO().obtenerBodegas(((EUsuario)Session["usuario"]).Cedula).OrderBy(x => x.Nombre).ToList();
+        }
         bodegas.Insert(0, (new EBodega { ID = 0, Nombre = "Seleccionar" }));
         DDL_Bodegas.DataSource = bodegas;
         DDL_Bodegas.DataTextField = "Nombre";
@@ -139,7 +147,7 @@ public partial class View_VProducto : System.Web.UI.Page
 
         }
         int existenciasEnBodega = new ExistenciasDAO().obtenerExistencias(int.Parse(bodegaSeleccionada)).Count();//cuenta los productos registrados sin tener en cuenta la cantidad por producto
-        string codigo = ((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio.Substring(0, 4);
+        string codigo = ((EUsuario)Session["usuario"]).Rol.Rol == "Administrador" ? ((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio.Substring(0, 4) : ((EUsuario)Session["usuario"]).Cedula.Substring(0, 4);
         string categoria = (categoriaSeleccionada.Length < 2) ? "0" + categoriaSeleccionada : categoriaSeleccionada.Substring(0, 2);
         string bodega = (bodegaSeleccionada.Length < 2) ? "0" + bodegaSeleccionada : bodegaSeleccionada.Substring(0, 2);
         codigo += categoria + bodega + I_nombreProducto.Value.Substring(0, 2).ToUpper() + (existenciasEnBodega + 1).ToString("00000");

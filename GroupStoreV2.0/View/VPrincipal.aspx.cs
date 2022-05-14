@@ -22,10 +22,13 @@ public partial class View_VPrincipal : System.Web.UI.Page
         int i = 0;
         foreach (var producto in productos)
         {
-            imagenes[i] = producto.ImagenUno;
-            nombres[i] = producto.Nombre;
-            descripciones[i] = producto.Descripcion;
-            i++;
+            if (i < 6)
+            {
+                imagenes[i] = producto.ImagenUno;
+                nombres[i] = producto.Nombre;
+                descripciones[i] = producto.Descripcion;
+                i++;
+            }
         }
         img1.Src = imagenes[0];
         img2.Src = imagenes[1];

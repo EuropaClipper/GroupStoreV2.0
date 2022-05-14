@@ -132,6 +132,14 @@ public partial class View_VRegistro : System.Web.UI.Page
                     usuario_nuevo.Certificados = inputGroupFile01.Value;
                 }
                 usuario_nuevo.ID_Rol = 3;
+                ENegocio negocio = new ENegocio
+                {
+                    Nit = usuario_nuevo.Cedula,
+                    Nombre = usuario_nuevo.Empresa,
+                    Direccion = usuario_nuevo.Direccion,
+                    telefono = usuario_nuevo.Telefono
+                };
+                new NegocioDAO().InsertarNegocio(negocio);
             }
             else
             {

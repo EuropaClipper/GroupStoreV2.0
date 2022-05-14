@@ -26,7 +26,7 @@ public partial class View_VInicioSesion : System.Web.UI.Page
                     Response.Redirect("VPrincipal.aspx");
                     break;
                 case "Proveedor":
-                    Response.Redirect("VPrincipal.aspx");
+                    Response.Redirect("VProveedor.aspx");
                     break;
             }
         }

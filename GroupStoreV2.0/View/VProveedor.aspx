@@ -51,7 +51,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Panel de control</div>
-                            <a class="nav-link" href="VInicioAdministrador.aspx">
+                            <a class="nav-link" href="VProveedor.aspx">
                                 <div class="sb-nav-link-icon"><i class="bi bi-house"></i></div>
                                 Vista general
                             </a>
@@ -62,7 +62,7 @@
                             </a>
                             <!---->
                             <!--Sección bodega-->
-                            <a class="nav-link" href="VBodegas.aspx">
+                            <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="bi bi-shop"></i></div>
                                 Bodegas
                             </a>
@@ -90,49 +90,6 @@
                                     </a>
                                 </nav>
                             </div>
-                            <!---->
-                            <!--Sección de compras-->
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#Compras_collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="bi bi-bag"></i></div>
-                                Compras
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="Compras_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">
-                                        <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
-                                        Ver compras
-                                    </a>
-                                    <a class="nav-link" href="VHistorialCompra.aspx">
-                                        <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
-                                        Historial de compras
-                                    </a>
-                                    <a class="nav-link" href="#">
-                                        <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
-                                        Reporte de compras
-                                    </a>
-                                </nav>
-                            </div>
-                            <!---->
-                            <!--Sección de proveedores-->
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#Proveedores_collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="bi bi-people"></i></div>
-                                Proveedores
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="Proveedores_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">
-                                        <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
-                                        Ver proveedores
-                                    </a>
-                                    <a class="nav-link" href="#">
-                                        <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
-                                        Reporte de proveedores
-                                    </a>
-                                </nav>
-                            </div>
-                            <!---->
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -169,7 +126,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="bi bi-graph-up me-1"></i>
-                                        <b>Compras / Ventas</b>
+                                        <b>Ventas</b>
                                     </div>
                                     <div class="card-body">
                                         <!--lo planeado es poner un grafico de lineas con las compras y ventas -seria muy bueno que fuera en una sola gráfica -->
@@ -189,7 +146,7 @@
                         </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-dark mt-auto">
+                <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 [Serializable]
-[Table("tipo_movimineto", Schema = "public")]
+[Table("tipo_movimiento", Schema = "public")]
 public class ETipoMovimiento
 {
     [Key,Column("id")]

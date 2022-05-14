@@ -45,6 +45,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="VPrincipal.aspx">Ir a inicio</a></li>
+                            <li><a class="dropdown-item" href="VHistorialComprasUsuario.aspx">Historial de Compras</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>

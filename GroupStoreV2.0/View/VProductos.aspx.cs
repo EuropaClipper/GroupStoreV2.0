@@ -18,8 +18,16 @@ public partial class View_VProductos : System.Web.UI.Page
     private void cargarProductos()
     {
         EUsuario usuarioRegistrado = (EUsuario)Session["usuario"];
-        EUsuarioNegocio relacionUsuarioNegocio = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
-        List<EBodega> bodegas = new BodegaDAO().obtenerBodegas(relacionUsuarioNegocio.NITNegocio);
+        List<EBodega> bodegas;
+        if (usuarioRegistrado.Rol.Rol == "Administrador")
+        {
+            EUsuarioNegocio relacionUsuarioNegocio = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
+            bodegas = new BodegaDAO().obtenerBodegas(relacionUsuarioNegocio.NITNegocio);
+        }
+        else
+        {
+            bodegas = new BodegaDAO().obtenerBodegas(usuarioRegistrado.Cedula);
+        }
         ViewState["bodegas"] = bodegas;
         List<EProducto> productos = new List<EProducto>();
         foreach (var bodega in bodegas)
