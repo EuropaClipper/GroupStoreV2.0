@@ -28,4 +28,5 @@ public class Mapeo : DbContext
     public virtual DbSet<EProducto> Producto { get; set; }
     public virtual DbSet<EUnidadMedida> UnidadMedida { get; set; }
     public virtual DbSet<EUsuarioNegocio> UsuarioNegocio { get; set; }
+    public virtual DbSet<EEstado> Estado { get; set; }
 }

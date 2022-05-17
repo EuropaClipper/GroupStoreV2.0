@@ -78,9 +78,17 @@ public partial class View_VRegistro : System.Web.UI.Page
                 Contrasena = I_CContrasenaAdmin.Value,
                 ID_Rol = 1
             };
+            EBodega bodegaAuto = new EBodega()
+            {
+                ID = nuevo_negocio.Nit.Substring(0,5) + "BO001",
+                Capacidad = 500,
+                NITNegocio = nuevo_negocio.Nit,
+                Nombre = "Principal"
+            };
             EUsuarioNegocio nuevaRelacion = new EUsuarioNegocio { CedulaUsuario = usuario_admin_negocio.Cedula, NITNegocio = nuevo_negocio.Nit };
             new NegocioDAO().InsertarNegocio(nuevo_negocio);
             new UsuarioDAO().InsertarUsuario(usuario_admin_negocio);
+            new BodegaDAO().insertarBodega(bodegaAuto);
             new UsuarioNegocioDAO().insertarRelacionUsuarioNegocio(nuevaRelacion);
         }
         else

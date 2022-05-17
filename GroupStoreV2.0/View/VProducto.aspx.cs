@@ -31,12 +31,12 @@ public partial class View_VProducto : System.Web.UI.Page
         string codigoProducto = Request.QueryString["cp"];
         string idBodega = Request.QueryString["b"];
         EProducto producto = new ProductoDAO().obtenerProducto(codigoProducto);
-        EExistencias existencia = new ExistenciasDAO().obtenerExistencia(int.Parse(idBodega), codigoProducto);
+        EExistencias existencia = new ExistenciasDAO().obtenerExistencia(idBodega, codigoProducto);
         if (producto != null && existencia != null)
         {
             //cuando se edite el producto se necesita el precio, stock y idBodega. los asignare aquí
             producto.Stock = existencia.Cantidad;
-            producto.IDBodega = int.Parse(idBodega);
+            producto.IDBodega = idBodega;
             producto.Precio = existencia.PrecioPromedio;
             //
             ViewState["producto"] = producto;//variable para tener el producto a mano para hacer la edición
@@ -77,7 +77,7 @@ public partial class View_VProducto : System.Web.UI.Page
         {
             bodegas = new BodegaDAO().obtenerBodegas(((EUsuario)Session["usuario"]).Cedula).OrderBy(x => x.Nombre).ToList();
         }
-        bodegas.Insert(0, (new EBodega { ID = 0, Nombre = "Seleccionar" }));
+        bodegas.Insert(0, (new EBodega { ID = "0", Nombre = "Seleccionar" }));
         DDL_Bodegas.DataSource = bodegas;
         DDL_Bodegas.DataTextField = "Nombre";
         DDL_Bodegas.DataValueField = "ID";
@@ -134,8 +134,8 @@ public partial class View_VProducto : System.Web.UI.Page
         }
         var categoriaSeleccionada = DDL_Categorias.SelectedItem.Value;
         var bodegaSeleccionada = DDL_Bodegas.SelectedItem.Value;
-        int bodegaFull = new BodegaDAO().obtenerBodega(int.Parse(bodegaSeleccionada)).Capacidad;
-        int existenciTotalEnBodega = new ExistenciasDAO().obtenerExistencias(int.Parse(bodegaSeleccionada)).Sum(x => x.Cantidad);
+        int bodegaFull = new BodegaDAO().obtenerBodega(bodegaSeleccionada).Capacidad;
+        int existenciTotalEnBodega = new ExistenciasDAO().obtenerExistencias(bodegaSeleccionada).Sum(x => x.Cantidad);
         if (bodegaFull - (existenciTotalEnBodega + int.Parse(I_Stock.Value)) < 0)
         {
             errorBodegallena.Attributes.Add("class", "alert alert-danger d-block mt-1 p-1");
@@ -146,7 +146,7 @@ public partial class View_VProducto : System.Web.UI.Page
             errorBodegallena.Attributes.Add("class", "d-none");
 
         }
-        int existenciasEnBodega = new ExistenciasDAO().obtenerExistencias(int.Parse(bodegaSeleccionada)).Count();//cuenta los productos registrados sin tener en cuenta la cantidad por producto
+        int existenciasEnBodega = new ExistenciasDAO().obtenerExistencias(bodegaSeleccionada).Count();//cuenta los productos registrados sin tener en cuenta la cantidad por producto
         string codigo = ((EUsuario)Session["usuario"]).Rol.Rol == "Administrador" ? ((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio.Substring(0, 4) : ((EUsuario)Session["usuario"]).Cedula.Substring(0, 4);
         string categoria = (categoriaSeleccionada.Length < 2) ? "0" + categoriaSeleccionada : categoriaSeleccionada.Substring(0, 2);
         string bodega = (bodegaSeleccionada.Length < 2) ? "0" + bodegaSeleccionada : bodegaSeleccionada.Substring(0, 2);
@@ -163,14 +163,14 @@ public partial class View_VProducto : System.Web.UI.Page
             Descripcion = I_Descripcion.Value,
             Estado = true,
             ImagenUno = imagenes[0],
-            ImagenDos = imagenes[1],
-            ImagenTres = imagenes[2]
+            ImagenDos = imagenes[1] != null ? imagenes[1]: "~\\Resources\\Pagina\\imagen-no-disponible.jpg",
+            ImagenTres = imagenes[2] != null ? imagenes[2] : "~\\Resources\\Pagina\\imagen-no-disponible.jpg"
         };
         EExistencias relacionBodegaProducto = new EExistencias
         {
             Cantidad = int.Parse(I_Stock.Value.Trim()),
             PrecioPromedio = float.Parse(I_Precio.Value),
-            CodigoBodega = int.Parse(bodegaSeleccionada),
+            CodigoBodega = bodegaSeleccionada,
             CodigoProducto = codigo
         };
         new ProductoDAO().insertarProducto(nuevoProducto);
@@ -210,6 +210,19 @@ public partial class View_VProducto : System.Web.UI.Page
         }
         if (I_Stock.Value != "" && int.Parse(I_Stock.Value) != producto.Stock)
         {
+            var bodegaSeleccionada = DDL_Bodegas.SelectedItem.Value;
+            int bodegaFull = new BodegaDAO().obtenerBodega(bodegaSeleccionada).Capacidad;
+            int existenciTotalEnBodega = new ExistenciasDAO().obtenerExistencias(bodegaSeleccionada).Where(x=> x.CodigoProducto != producto.Codigo).Sum(x => x.Cantidad);
+            if (bodegaFull - (existenciTotalEnBodega + int.Parse(I_Stock.Value)) < 0)
+            {
+                errorBodegallena.Attributes.Add("class", "alert alert-danger d-block mt-1 p-1");
+                return;
+            }
+            else
+            {
+                errorBodegallena.Attributes.Add("class", "d-none");
+
+            }
             producto.Stock = int.Parse(I_Stock.Value);
             editado = true;
         }
@@ -230,7 +243,7 @@ public partial class View_VProducto : System.Web.UI.Page
         }
         if (DDL_Bodegas.SelectedValue != "0" && DDL_Bodegas.SelectedValue != producto.IDBodega.ToString())
         {
-            producto.IDBodega = int.Parse(DDL_Bodegas.SelectedValue);
+            producto.IDBodega = DDL_Bodegas.SelectedValue;
             editado = true;
         }
         if (FU_Imagenes.HasFiles)
@@ -284,6 +297,11 @@ public partial class View_VProducto : System.Web.UI.Page
         }
         if (editado)
         {
+            EExistencias existencia = new ExistenciasDAO().obtenerExistencia(producto.IDBodega, producto.Codigo);
+            existencia.Cantidad = producto.Stock;
+            existencia.CodigoBodega = producto.IDBodega;
+            existencia.PrecioPromedio = producto.Precio;
+            new ExistenciasDAO().actualizarExistencia(existencia);
             new ProductoDAO().actualizarProducto(producto);
             this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El producto se ha editado correctamente');window.location.href=\"VProducto.aspx?cp="+producto.Codigo
                 +"&b="+producto.IDBodega+"\";</script>");

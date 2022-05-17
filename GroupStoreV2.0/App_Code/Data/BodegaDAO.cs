@@ -29,7 +29,7 @@ public class BodegaDAO
             db.SaveChanges();
         }
     }
-    public EBodega obtenerBodega(int idBodega)
+    public EBodega obtenerBodega(string idBodega)
     {
         using(var db = new Mapeo())
         {

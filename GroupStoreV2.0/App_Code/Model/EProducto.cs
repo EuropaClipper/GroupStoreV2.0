@@ -38,9 +38,9 @@ public class EProducto
     [NotMapped]
     public int Stock { get; set; }
     [NotMapped]
-    public int IDBodega { get; set; }
+    public string IDBodega { get; set; }
     [NotMapped]
-    public EBodega Bodega { get { return IDBodega == 0 ? null : new BodegaDAO().obtenerBodega(IDBodega); } set { } }
+    public EBodega Bodega { get { return IDBodega == "0" ? null : new BodegaDAO().obtenerBodega(IDBodega); } set { } }
     [NotMapped]
     public float Precio { get; set; }
 

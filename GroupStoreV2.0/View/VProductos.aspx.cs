@@ -57,7 +57,7 @@ public partial class View_VProductos : System.Web.UI.Page
     protected void GV_Productos_SelectedIndexChanged(object sender, EventArgs e)
     {
         GridViewRow row = GV_Productos.SelectedRow;
-        int idBodega = ((List<EBodega>)ViewState["bodegas"]).Find(x => x.Nombre.Equals(row.Cells[2].Text)).ID;
+        string idBodega = ((List<EBodega>)ViewState["bodegas"]).Find(x => x.Nombre.Equals(row.Cells[2].Text)).ID;
         Response.Redirect("VProducto.aspx" + "?cp=" + row.Cells[1].Text + "&" + "b=" + idBodega);
     }
 

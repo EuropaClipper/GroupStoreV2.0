@@ -12,8 +12,8 @@ public class EExistencias
     public string CodigoProducto { get; set; }
     [NotMapped]
     public EProducto Producto { get { return new ProductoDAO().obtenerProducto(CodigoProducto); } set { } }
-    [Column("codigo_bodega")]
-    public int CodigoBodega { get; set; }
+    [Column("id_bodega")]
+    public string CodigoBodega { get; set; }
     [NotMapped]
     public EBodega Bodega { get { return new BodegaDAO().obtenerBodega(CodigoBodega); } set { } }
     [Column("cantidad")]

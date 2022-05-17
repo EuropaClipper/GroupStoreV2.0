@@ -273,7 +273,7 @@
                                             </asp:DropDownList>
                                         </div>
                                         <asp:RangeValidator ID="RG_Bodegas" runat="server" ErrorMessage="Seleccione la bodega donde se guardará el producto"
-                                            ControlToValidate="DDL_Bodegas" MaximumValue="99999" MinimumValue="1" ValidationGroup="VG_AggProducto" CssClass="text-danger ms-2" Display="Dynamic" Type="Integer"></asp:RangeValidator>
+                                            ControlToValidate="DDL_Bodegas"  MinimumValue="1" MaximumValue="99999999999" ValidationGroup="VG_AggProducto" CssClass="text-danger ms-2" Display="Dynamic" Type="String"></asp:RangeValidator>
                                         <div class="d-none" runat="server" id="errorBodegallena">
                                             <i class="bi bi-exclamation-triangle ms-2"></i>
                                             <i class="ms-5">No hay espacio en bodega para este stock.</i>

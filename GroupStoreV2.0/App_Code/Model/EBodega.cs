@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class EBodega
 {
     [Key,Column("id")]
-    public int ID { get; set; }
+    public string ID { get; set; }
     [Column("nombre")]
     public string Nombre { get; set; }
     [Column("capacidad")]
@@ -16,4 +16,6 @@ public class EBodega
     public string NITNegocio { get; set; }
     [NotMapped]
     public ENegocio Negocio { get { return new NegocioDAO().ObtenerNegocio(NITNegocio); } set { } }
+    [NotMapped]
+    public int NumeroProductos { get; set; }
 }

@@ -30,21 +30,21 @@ public class ExistenciasDAO
             db.SaveChanges();
         }
     }
-    public EExistencias obtenerExistencia(int idBodega, string codigoproducto)
+    public EExistencias obtenerExistencia(string idBodega, string codigoproducto)
     {
         using (var db = new Mapeo())
         {
             return db.Existencia.Where(x => x.CodigoBodega.Equals(idBodega) && x.CodigoProducto.Equals(codigoproducto)).FirstOrDefault();
         }
     }
-    public List<EExistencias> obtenerExistencias(int idBodega)
+    public List<EExistencias> obtenerExistencias(string idBodega)
     {
         using (var db = new Mapeo())
         {
             return db.Existencia.Where(x => x.CodigoBodega.Equals(idBodega)).ToList();
         }
     }
-    public List<EExistencias> obtenerExistencias(string codigoProducto)
+    public List<EExistencias> obtenerExistenciasProd(string codigoProducto)
     {
         using (var db = new Mapeo())
         {

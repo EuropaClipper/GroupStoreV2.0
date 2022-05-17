@@ -27,7 +27,7 @@ public class RecuperacionContrasena
                 tokenRecuperacion.FechaCaducidad = tokenRecuperacion.FechaInicio.AddMinutes(30);
                 tokenRecuperacion.TokenGenerado = encriptar(JsonConvert.SerializeObject(tokenRecuperacion));
                 new TokenRecuperacionDAO().InsetarToken(tokenRecuperacion);
-                string linkAcceso = "http://localhost:53226/View/VRecuperarContrasena.aspx?t=" +tokenRecuperacion.TokenGenerado;
+                string linkAcceso = "http://localhost:51294//View/VRecuperarContrasena.aspx?t=" + tokenRecuperacion.TokenGenerado;
                 JsonConvert.DeserializeObject(JsonConvert.SerializeObject(tokenRecuperacion));
                 enviarCorreoRecuperacion(usuario.Correo, linkAcceso);
                 tokenRecuperacion.Msj_error = "Dirijase a su correo para continuar con la recuperación de contraseña";

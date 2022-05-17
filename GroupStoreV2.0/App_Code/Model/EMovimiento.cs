@@ -28,4 +28,10 @@ public class EMovimiento
     public string Mes { get; set; }
     [Column("anho")]
     public string Anho { get; set; }
+    [Column("id_estado")]
+    public int IDEstado { get; set; }
+    [Column("precio_total")]
+    public int PrecioTotal { get; set; }
+    [NotMapped]
+    public EEstado Estado { get { return new EstadoDAO().obtenerEstado(IDEstado); } set { } }
 }
