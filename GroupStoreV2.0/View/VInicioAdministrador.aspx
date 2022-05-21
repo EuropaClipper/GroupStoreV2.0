@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="VInicioAdministrador.aspx.cs" Inherits="View_VInicioAdministrador" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,7 +18,7 @@
     <form runat="server">
         <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
+            <a class="navbar-brand ps-3" runat="server" id="nombreNegocio" href="VInicioAdministrador.aspx">Nombre negocio</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -133,7 +135,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Registrado como:</div>
-                        Nombre de usuario
+                        <span runat="server" id="registradoComo"></span>
                     </div>
                 </nav>
             </div>
@@ -147,9 +149,9 @@
                         <div class="row">
                             <div class="col-xl-3 col-lg-3 col-md-12">
                                 <div class="card bg-light shadow-sm text-black mb-4">
-                                    <div class="card-body">Tiene # pedidos nuevos</div>
+                                    <div class="card-body"><span runat="server" id="numPedidosNuevos"></span></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-secondary stretched-link" href="#">Ver detalles</a>
+                                        <a class="small text-secondary stretched-link" href="VPedidos.aspx">Ver detalles</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -169,6 +171,14 @@
                                     </div>
                                     <div class="card-body">
                                         <!--lo planeado es poner un grafico de lineas con las compras y ventas -seria muy bueno que fuera en una sola gráfica -->
+                                        <asp:Chart runat="server" ID="ctl00">
+                                            <Series>
+                                                <asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Spline"></asp:Series>
+                                            </Series>
+                                            <ChartAreas>
+                                                <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                                            </ChartAreas>
+                                        </asp:Chart>
                                     </div>
                                 </div>
                             </div>

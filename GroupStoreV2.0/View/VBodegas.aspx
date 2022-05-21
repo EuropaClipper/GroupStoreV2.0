@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
+            <a class="navbar-brand ps-3" runat="server" id="nombreNegocio" href="VInicioAdministrador.aspx">Nombre negocio</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -76,11 +76,11 @@
                             </a>
                             <div class="collapse" id="Ventas_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="VPedidos.aspx">
                                         <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
                                         Ver pedidos
                                     </a>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="VHistorialVenta.aspx">
                                         <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                         Historial de ventas
                                     </a>
@@ -99,11 +99,7 @@
                             </a>
                             <div class="collapse" id="Compras_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">
-                                        <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
-                                        Ver compras
-                                    </a>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="VHistorialCompra.aspx">
                                         <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                         Historial de compras
                                     </a>
@@ -137,7 +133,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Registrado como:</div>
-                        Nombre de usuario
+                        <span runat="server" id="registradoComo"></span>
                     </div>
                 </nav>
             </div>

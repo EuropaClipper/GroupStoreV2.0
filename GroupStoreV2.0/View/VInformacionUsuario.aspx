@@ -58,7 +58,7 @@
         <asp:View runat="server">
             <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
                 <!-- Navbar Brand-->
-                <a class="navbar-brand ps-3" href="VInicioAdministrador.aspx">Nombre negocio</a>
+                <a class="navbar-brand ps-3" runat="server" id="nombreNegocio" href="VInicioAdministrador.aspx">Nombre negocio</a>
                 <!-- Navbar Search-->
                 <div class="d-none d-md-block ms-auto"></div>
                 <!-- Navbar-->
