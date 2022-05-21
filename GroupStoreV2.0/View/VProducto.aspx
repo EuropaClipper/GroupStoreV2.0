@@ -79,7 +79,7 @@
                         </a>
                         <!---->
                         <!--Sección bodega-->
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="VBodegas.aspx">
                             <div class="sb-nav-link-icon"><i class="bi bi-shop"></i></div>
                             Bodegas
                         </a>
@@ -93,11 +93,11 @@
                         </a>
                         <div class="collapse" id="Ventas_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="VPedidos.aspx">
                                     <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
                                     Ver pedidos
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="VHistorialVenta.aspx">
                                     <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                     Historial de ventas
                                 </a>
@@ -116,11 +116,7 @@
                         </a>
                         <div class="collapse" id="Compras_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
-                                    Ver compras
-                                </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="VHistorialCompra.aspx">
                                     <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                     Historial de compras
                                 </a>

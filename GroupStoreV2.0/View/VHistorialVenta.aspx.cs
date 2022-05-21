@@ -9,6 +9,21 @@ public partial class View_VHistorialVenta : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            EUsuario usuarioRegistrado = (EUsuario)Session["usuario"];
+            if (!(usuarioRegistrado != null && (usuarioRegistrado.Rol.Rol.Equals("Proveedor") || usuarioRegistrado.Rol.Rol.Equals("Administrador"))))
+            {
+                Response.Redirect("VInicioSesion.aspx");
+            }
+            else
+            {
+                cargarHistorialVentas();
+            }
+        }
+    }
+    private void cargarHistorialVentas()
+    {
         List<EMovimiento> movimientos;
         if (((EUsuario)Session["usuario"]).Rol.Rol.Equals("Administrador"))
         {
@@ -18,6 +33,13 @@ public partial class View_VHistorialVenta : System.Web.UI.Page
         else
         {
             movimientos = new MovimientoDAO().obtenerMovimientosUsuario(((EUsuario)Session["usuario"]).Cedula).Where(x => x.IdTipoMovimiento.Equals(2)).ToList();
+        }
+        foreach (var movimiento in movimientos)
+        {
+            string fechaP = (movimiento.Dia < 10 ? "0" + movimiento.Dia : "" + movimiento.Dia) + "/";
+            fechaP += movimiento.Mes < 10 ? "0" + movimiento.Mes : "" + movimiento.Mes;
+            fechaP += "/" + movimiento.Anho;
+            movimiento.Fecha = fechaP;
         }
         GV_Ventas.DataSource = movimientos;
         GV_Ventas.DataBind();

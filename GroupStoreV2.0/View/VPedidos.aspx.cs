@@ -41,16 +41,17 @@ public partial class View_VPedidos : System.Web.UI.Page
                 List<EDetalle> detallesMovimiento = new DetalleDAO().obtenerDetalles(movimiento.ID);
                 int produtosPedido = detallesMovimiento.Sum(x => x.Cantidad);
                 float precioTotal = movimiento.PrecioTotal;
-                tarjetas += "<div class=\"card text-center m-3 col-12 col-lg-3\"" +
+                tarjetas += "<div class=\"card text-center m-3 col-12 col-lg-3\">" +
                     "<div class=\"card-body\">" +
                     "<h5 class=\"card-title\">ID Comprador: " + movimiento.CedulaUsuario + "</h5>" +
                     "<p class=\"card-text\"><b>Descripción:</b><br/>" + movimiento.Descripcion +
                     "<br/>" + produtosPedido + " productos cargados</p>" +
                     "<a href=\"VPedido.aspx?mid=" + movimiento.ID + "\" class=\"btn btn-outline-primary\">Ver detalles del pedido</a>" +
                     "</div></div>";
-                if (cont > 3)
+                if (cont > 1)
                 {
-                    filas += "<div class=\"row\">" + tarjetas + "</div>";
+                    filas += "<div class=\"row justify-content-center\">" + tarjetas + "</div>";
+                    tarjetas = "";
                     cont = 0;
                 }
                 cont++;

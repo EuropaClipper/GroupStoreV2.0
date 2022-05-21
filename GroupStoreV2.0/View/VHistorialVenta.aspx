@@ -55,13 +55,13 @@
                             Vista general
                         </a>
                         <!--Sección productos-->
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="VPRoductos.aspx">
                             <div class="sb-nav-link-icon"><i class="bi bi-box-seam"></i></div>
                             Productos
                         </a>
                         <!---->
                         <!--Sección bodega-->
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="VBodegas.aspx">
                             <div class="sb-nav-link-icon"><i class="bi bi-shop"></i></div>
                             Bodegas
                         </a>
@@ -75,11 +75,11 @@
                         </a>
                         <div class="collapse" id="Ventas_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="VPedidos.aspx">
                                     <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
                                     Ver pedidos
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="VHistorialVenta.aspx">
                                     <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                     Historial de ventas
                                 </a>
@@ -98,10 +98,6 @@
                         </a>
                         <div class="collapse" id="Compras_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
-                                    Ver compras
-                                </a>
                                 <a class="nav-link" href="VHistorialCompra.aspx">
                                     <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                     Historial de compras
@@ -141,9 +137,9 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            <main class="px-1">
+            <main class="px-2">
                 <form id="form1" runat="server">
-                    <div id="container-fluid col-12 col-md-12 col-lg-11 mt-4 bg-secondary bg-opacity-10 shadow rounded-3 pt-1 pb-2">
+                    <div class="container-fluid col-12  mt-4 bg-secondary bg-opacity-10 shadow rounded-3 pt-1 pb-2">
                         <div class="d-flex flex-row">
                             <span class="h2">Historial de Ventas</span>
                         </div>
@@ -151,13 +147,12 @@
                         <asp:GridView runat="server" ID="GV_Ventas" AutoGenerateColumns="False" CssClass="table table-hover table-secondary table-striped table-bordered table-responsive" DataKeyNames="ID">
                             <Columns>
                                 <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-success bi bi-eye" ItemStyle-Width="50" ShowSelectButton="true" SelectText="" />
-                                <asp:BoundField DataField="ID" HeaderText="Id" />
-                                <asp:BoundField DataField="CedulaUsuario" HeaderText="Cédula del Administrador" />
-                                <asp:BoundField DataField="NITNegocio" HeaderText="Cédula del Proveedor" />
-                                <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
-                                <asp:BoundField DataField="Dia" HeaderText="Día" />
-                                <asp:BoundField DataField="Mes" HeaderText="Mes" />
-                                <asp:BoundField DataField="Anho" HeaderText="Año" />
+                                <asp:BoundField DataField="ID" HeaderText="Codigo" />
+                                <asp:BoundField DataField="CedulaUsuario" HeaderText="Cédula comprador" />
+                                <asp:BoundField DataField="Usuario.Nombres" HeaderText="Nombres" />
+                                <asp:BoundField DataField="Usuario.Apellidos" HeaderText="Apellidos" />
+                                <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                             </Columns>
                             <EmptyDataTemplate>
                                 <div class="text-center">

@@ -23,15 +23,17 @@ public class EMovimiento
     [Column("descripcion")]
     public string Descripcion { get; set; }
     [Column("dia")]
-    public string Dia{ get; set; }
+    public int Dia{ get; set; }
     [Column("mes")]
-    public string Mes { get; set; }
+    public int Mes { get; set; }
     [Column("anho")]
-    public string Anho { get; set; }
+    public int Anho { get; set; }
     [Column("id_estado")]
     public int IDEstado { get; set; }
     [Column("precio_total")]
     public int PrecioTotal { get; set; }
     [NotMapped]
     public EEstado Estado { get { return new EstadoDAO().obtenerEstado(IDEstado); } set { } }
+    [NotMapped]
+    public string Fecha { get; set; }
 }
