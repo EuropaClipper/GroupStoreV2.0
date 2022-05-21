@@ -109,17 +109,17 @@
             <br />
             <br />
             <br />
-            <div class="container">
-                <h4 >Nuevos Productos</h4>
+            <div class="container text-center pb-5">
+                <h3 >Nuevos Productos</h3>
             </div>
-            <div id="CarouselProductos" class="carousel slide" data-bs-ride="carousel" style="background:#DDDDFF">
+            <div id="CarouselProductos" class="carousel slide" data-bs-ride="carousel" style="background:#000000">
                 <ol class="carousel-indicators">
                     <li data-bs-target="#CarouselProductos" data-bs-slide-to="0" class="active"></li>
                     <li data-bs-target="#CarouselProductos" data-bs-slide-to="1"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="container">
+                        <div class="container p-5">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="card">
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="card">
-                                        <img src="" runat="server" id="img2" class="card-img-top" alt="Producto"  width="10" height="200" />
+                                        <img src="" runat="server" id="img2" class="card-img-top" alt="Producto"  width="100" height="200" />
                                         <div class="card-body">
                                             <h5 class="card-title" runat="server" id="pr2">Titulo de la card</h5>
                                             <p runat="server" id="dsc2"></p>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="container">
+                        <div class="container p-5">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="card">
