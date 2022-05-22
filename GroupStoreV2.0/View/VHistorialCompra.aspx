@@ -98,10 +98,6 @@
                         </a>
                         <div class="collapse" id="Compras_collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
-                                    Ver compras
-                                </a>
                                 <a class="nav-link" href="VHistorialCompra.aspx">
                                     <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                     Historial de compras
