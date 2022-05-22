@@ -8,7 +8,7 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap-icons-1.8.1/bootstrap-icons.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.min.js"></script>
-    <title>Catalogo de productos</title>ipt>
+    <title>Catalogo de productos</title>
 </head>
 <body>
     <form id="form1" class="py-4" runat="server">
@@ -22,7 +22,7 @@
                 <div class="col-3">
                     <div class="input-group">
                         <span class="input-group-text">Nombre</span>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" runat="server" id="i_Nombre" />
                     </div>
                 </div>
                 <div class="col-3">
@@ -45,74 +45,32 @@
             </div>
             <hr />
             <div class="row">
-                <asp:DataList ID="DL_Catalogo" runat="server" RepeatDirection="Horizontal" RepeatColumns="4" CellPadding="8" HorizontalAlign="Center" DataKeyField="Codigo"
-                    OnSelectedIndexChanged="DL_Catalogo_SelectedIndexChanged">
-                    <ItemTemplate>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-header">
-                                <h5 class="card-title text-center"><%# DataBinder.Eval(Container.DataItem, "Nombre")%></h5>
-                            </div>
-                            <img src='<%# DataBinder.Eval(Container.DataItem, "ImagenUno")%>' runat="server" />
-                            <div class="card-body">
-                                <div class=" d-flex">
-                                    <b>Categoria:&nbsp;</b><span class="text-dark"> <%# DataBinder.Eval(Container.DataItem, "Categoria.Categoria")%></span>
-                                </div>
-                                <div class="d-flex">
-                                    <b>Capacidad/Peso:&nbsp;</b><span class="text-dark"><%# DataBinder.Eval(Container.DataItem, "Capacidad")%> <%# DataBinder.Eval(Container.DataItem, "UnidadMedida.Unidad")%></span>
-                                </div>
-                                <div class="d-flex">
-                                    <b>Precio:&nbsp;</b><span class="text-dark"><%# DataBinder.Eval(Container.DataItem, "Precio","{0:C}")%></span>
-                                </div>
-                                <div class="row mt-2">
-                                    <a class="text-center text-decoration-none" href="#">Ver detalles</a>
-                                </div>
-                            </div>
-                            <div class="card-footer text-center">
-                                <asp:LinkButton ID="lnkEdit" runat="server" CssClass="btn btn-outline-success" CommandName="Select">Agregar al carrito <i class="bi bi-cart-plus"></i></asp:LinkButton>
-                            </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <h5 class="card-title text-center"></h5>
+                    </div>
+                    <img src='' runat="server" />
+                    <div class="card-body">
+                        <div class=" d-flex">
+                            <b>Categoria:&nbsp;</b><span class="text-dark"> </span>
                         </div>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-header">
-                                <h5 class="card-title text-center"><%# DataBinder.Eval(Container.DataItem, "Nombre")%></h5>
-                            </div>
-                            <img src='<%# DataBinder.Eval(Container.DataItem, "ImagenUno")%>' runat="server" />
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <b>Precio unidad:&nbsp;</b><span class="text-dark"><%# DataBinder.Eval(Container.DataItem, "Precio","{0:C}")%></span>
-                                </div>
-
-                                <div class="d-flex justify-content-center">
-                                    <a href="#" onclick="quitarCantidad()"><i class="bi bi-dash-circle"></i></a>&nbsp;
-                                    <span runat="server" id="cantidadProducto"> 1 </span>&nbsp;
-                                    <a href="#" onclick="agregarCantidad()"><i class="bi bi-plus-circle"></i></a>
-                                </div>
-                            </div>
-                            <div class="card-footer text-center">
-                                <button type="button" class="btn btn-outline-success">Agregar al carrito<i class="bi bi-cart-plus"></i></button>
-                            </div>
+                        <div class="d-flex">
+                            <b>Capacidad/Peso:&nbsp;</b><span class="text-dark"></span>
                         </div>
-                    </EditItemTemplate>
-                </asp:DataList>
+                        <div class="d-flex">
+                            <b>Precio:&nbsp;</b><span class="text-dark"></span>
+                        </div>
+                        <div class="row mt-2">
+                            <a class="text-center text-decoration-none" href="#">Ver detalles</a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a class="btn btn-outline-success" href="VCatalogo.aspx?p=0&c=0">Agregar al carrito <i class="bi bi-cart-plus"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
-    <script>
-        function agregarCantidad() {
-            var cantidad = document.getElementById("cantidadProducto").innerText;
-            document.getElementById("cantidadProducto").innerText = parseInt(cantidad) + 1;
-        }
-        function quitarCantidad() {
-            var cantidad = parseInt(document.getElementById("<%=cantidadProducto.ClientID%>").innerText);
-            if (cantidad <= 1) {
-                document.getElementById("cantidadProducto").innerText = 1;
-            }
-            else {
-                document.getElementById("cantidadProducto").innerText = cantidad - 1;
-            }
 
-        }
-    </script>
 </body>
 </html>

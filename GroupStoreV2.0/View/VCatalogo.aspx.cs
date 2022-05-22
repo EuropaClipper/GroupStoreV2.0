@@ -22,18 +22,7 @@ public partial class View_VCatalogo : System.Web.UI.Page
 
     private void cargarDatos()
     {
-        List<EProducto> productos = new ProductoDAO().obtenerProductos();
-        foreach (var producto in productos)
-        {
-            producto.Precio = new ExistenciasDAO().obtenerExistenciasProd(producto.Codigo)[0].PrecioPromedio;
 
-        }
-        DL_Catalogo.DataSource = productos;
-        DL_Catalogo.DataBind();
     }
-    protected void DL_Catalogo_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        DL_Catalogo.EditItemIndex =  DL_Catalogo.SelectedIndex;
-        cargarDatos();
-    }
+
 }

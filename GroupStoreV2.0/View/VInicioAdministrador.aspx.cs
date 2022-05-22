@@ -20,7 +20,7 @@ public partial class View_VInicioAdministrador : System.Web.UI.Page
             {
                 EUsuarioNegocio relacion = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
                 nombreNegocio.InnerText = relacion.Negocio.Nombre;
-                registradoComo.InnerText = usuarioRegistrado.Nombres + " " +usuarioRegistrado.Apellidos;
+                registradoComo.InnerText = usuarioRegistrado.Nombres + " " + usuarioRegistrado.Apellidos;
                 int pedidosNuevos = new MovimientoDAO().obtenerMovimientosNegocio(relacion.NITNegocio).Where(x => x.TipoMovimiento.Movimiento.Contains("Venta")).ToList().Count();
                 numPedidosNuevos.InnerText = pedidosNuevos != 1 ? "tiene " + pedidosNuevos + " pedidos nuevos." : "tiene " + pedidosNuevos + " pedido nuevo";
             }
