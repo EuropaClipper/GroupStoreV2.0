@@ -149,8 +149,9 @@ public partial class View_VProducto : System.Web.UI.Page
         int existenciasEnBodega = new ExistenciasDAO().obtenerExistencias(bodegaSeleccionada).Count();//cuenta los productos registrados sin tener en cuenta la cantidad por producto
         string codigo = ((EUsuario)Session["usuario"]).Rol.Rol == "Administrador" ? ((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio.Substring(0, 4) : ((EUsuario)Session["usuario"]).Cedula.Substring(0, 4);
         string categoria = (categoriaSeleccionada.Length < 2) ? "0" + categoriaSeleccionada : categoriaSeleccionada.Substring(0, 2);
-        string bodega = (bodegaSeleccionada.Length < 2) ? "0" + bodegaSeleccionada : bodegaSeleccionada.Substring(0, 2);
-        codigo += categoria + bodega + I_nombreProducto.Value.Substring(0, 2).ToUpper() + (existenciasEnBodega + 1).ToString("00000");
+        //string bodega = (bodegaSeleccionada.Length < 2) ? "0" + bodegaSeleccionada : bodegaSeleccionada.Substring(0, 2);
+        var aleatorio = Guid.NewGuid().ToString().Substring(0,2);
+        codigo += categoria + aleatorio + I_nombreProducto.Value.Substring(0, 2).ToUpper() + (existenciasEnBodega + 1).ToString("00000");
         EProducto nuevoProducto = new EProducto
         {
             Codigo = codigo,

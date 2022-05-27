@@ -12,6 +12,13 @@ public class DetallesCarritoDAO
             return db.DetalleCarrito.Where(X => X.IDCarrito.Equals(idCarrito)).ToList();
         }
     }
+    public EDetalleCarrito obtenerDetalleCarrito(string codigoProducto, int idCarrito)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.DetalleCarrito.Where(x => x.IDCarrito.Equals(idCarrito) && x.CodigoProducto.Equals(codigoProducto)).First();
+        }
+    }
     public void eliminarDetallesCarrito(int idCarrito)
     {
         List<EDetalleCarrito> listaDetalles = obtenerDetallesCarrito(idCarrito);
@@ -36,6 +43,21 @@ public class DetallesCarritoDAO
             db.DetalleCarrito.Attach(detalleCarrito);
             db.Entry(detalleCarrito).State = EntityState.Modified;
             db.SaveChanges();
+        }
+    }
+    public void insertarDetalleCarrito(EDetalleCarrito detalle)
+    {
+        using (var db = new Mapeo())
+        {
+            db.DetalleCarrito.Add(detalle);
+            db.SaveChanges();
+        }
+    }
+    public EDetalleCarrito obtenerDetalle(int idDetalle)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.DetalleCarrito.Where(x => x.ID.Equals(idDetalle)).FirstOrDefault();
         }
     }
 }

@@ -31,7 +31,7 @@ public class EMovimiento
     [Column("id_estado")]
     public int IDEstado { get; set; }
     [Column("precio_total")]
-    public int PrecioTotal { get; set; }
+    public float PrecioTotal { get; set; }
     [NotMapped]
     public EEstado Estado { get { return new EstadoDAO().obtenerEstado(IDEstado); } set { } }
     [NotMapped]

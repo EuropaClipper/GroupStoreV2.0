@@ -20,4 +20,6 @@ public class EExistencias
     public int Cantidad{ get; set; }
     [Column("precio_promedio")]
     public float PrecioPromedio { get; set; }
+    [NotMapped]
+    public string NITNegocio { get; set; }
 }

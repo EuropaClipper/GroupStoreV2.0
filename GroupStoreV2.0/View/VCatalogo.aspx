@@ -17,60 +17,53 @@
                 <p class="h1 text-center">Catalogo de productos</p>
             </div>
             <div class="row mt-3">
-                <div class="col-1">
+                <div class="col-12 col-lg-1">
                 </div>
-                <div class="col-3">
+                <div class="mb-1 mb-lg-0 mb-1 col-12 col-lg-3">
                     <div class="input-group">
                         <span class="input-group-text">Nombre</span>
                         <input type="text" class="form-control" runat="server" id="i_Nombre" />
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="mb-1 mb-lg-0 col-12 col-lg-3">
                     <div class="input-group">
                         <span class="input-group-text">Precio</span>
-                        <input type="text" class="form-control" placeholder="Mínimo" />
-                        <input type="text" class="form-control" placeholder="Máximo" />
+                        <input type="number" class="form-control" placeholder="Mínimo" runat="server" id="i_minimo"/>
+                        <input type="number" class="form-control" placeholder="Máximo" runat="server" id="i_maximo"/>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="mb-1 mb-lg-0 col-12 col-lg-3">
                     <div class="input-group">
                         <span class="input-group-text">Categoria</span>
                         <asp:DropDownList ID="DDL_Categorias" runat="server" CssClass="form-select">
                         </asp:DropDownList>
                     </div>
                 </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-outline-primary">Buscar <i class="bi bi-search"></i></button>
+                <div class="mb-1 mb-lg-0 col-12 col-lg-2 text-center text-lg-start">
+                    <button type="button" runat="server" id="btnBuscar" onserverclick="btnBuscar_ServerClick" class="btn btn-outline-primary">Buscar <i class="bi bi-search"></i></button>
                 </div>
             </div>
             <hr />
-            <div class="row">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                        <h5 class="card-title text-center"></h5>
-                    </div>
-                    <img src='' runat="server" />
-                    <div class="card-body">
-                        <div class=" d-flex">
-                            <b>Categoria:&nbsp;</b><span class="text-dark"> </span>
-                        </div>
-                        <div class="d-flex">
-                            <b>Capacidad/Peso:&nbsp;</b><span class="text-dark"></span>
-                        </div>
-                        <div class="d-flex">
-                            <b>Precio:&nbsp;</b><span class="text-dark"></span>
-                        </div>
-                        <div class="row mt-2">
-                            <a class="text-center text-decoration-none" href="#">Ver detalles</a>
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a class="btn btn-outline-success" href="VCatalogo.aspx?p=0&c=0">Agregar al carrito <i class="bi bi-cart-plus"></i></a>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
+                <div class="container-fluid pt-1 pb-4" runat="server" id="contenedorProductos"></div>
             </div>
         </div>
     </form>
+    <script>
+        function agregarCantidad() {
+            var cantidad = document.getElementById("cantidadProducto").innerText;
+            document.getElementById("cantidadProducto").innerText = parseInt(cantidad) + 1;
+        }
+        function quitarCantidad() {
+            var cantidad = parseInt(document.getElementById("cantidadProducto").innerText);
+            if (cantidad <= 1) {
+                document.getElementById("cantidadProducto").innerText = 1;
+            }
+            else {
+                document.getElementById("cantidadProducto").innerText = cantidad - 1;
+            }
 
+        }
+    </script>
 </body>
 </html>

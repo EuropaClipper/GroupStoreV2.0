@@ -169,14 +169,14 @@
                                     </div>
                                     <div class="card-body">
                                         <!--lo planeado es poner un grafico de lineas con las compras y ventas -seria muy bueno que fuera en una sola gráfica -->
-                                        <asp:Chart runat="server" ID="ctl00">
+<%--                                        <asp:Chart runat="server" ID="ctl00">
                                             <Series>
                                                 <asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Spline"></asp:Series>
                                             </Series>
                                             <ChartAreas>
                                                 <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                                             </ChartAreas>
-                                        </asp:Chart>
+                                        </asp:Chart>--%>
                                     </div>
                                 </div>
                             </div>

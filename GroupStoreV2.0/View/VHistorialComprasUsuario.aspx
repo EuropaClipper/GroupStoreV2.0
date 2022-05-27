@@ -18,68 +18,44 @@
                 <i class="bi bi-shop-window"></i>
                 GroupStore
             </a>
-            <asp:MultiView ID="MV_Estado" runat="server">
-                <asp:View runat="server">
-                    <div class="container">
-                        <div class="row w-100 p-0 m-0 ms-auto me-0">
-                            <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
-                                <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categorias</a></li>
-                                <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
-                            </ul>
-                            <div class="col-12 col-md-5 ms-auto me-0">
-                                <div class="input-group mt-1">
-                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
-                                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="navbar-nav ms-auto me-1">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                </svg>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" runat="server" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
-                            </ul>
-                        </li>
+            <div class="container">
+                <div class="row w-100 p-0 m-0 ms-auto me-0">
+                    <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
+                        <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categorias</a></li>
+                        <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
                     </ul>
-                </asp:View>
-                <asp:View runat="server">
-                    <div class="container">
-                        <div class="row w-100 justify-content-end p-0 m-0">
-                            <div class="col-12 col-lg-7 ">
-                                <ul class="nav nav-pills justify-content-center justify-content-lg-end">
-                                    <li class="nav-item"><a runat="server" id="A1" class="nav-link">Categorias</a></li>
-                                    <li class="nav-item"><a runat="server" id="A2" class="nav-link">Tiendas</a></li>
-                                    <li class="nav-item"><a runat="server" id="A3" class="nav-link">Proveedores</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-12 col-lg-4">
-                                <div class="input-group ">
-                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
-                                    <button class="btn btn-primary" id="btnNavbarSearch1" type="button"><i class="bi bi-search"></i></button>
-                                </div>
-                            </div>
+                    <div class="col-12 col-md-5 ms-auto me-0">
+                        <div class="input-group mt-1">
+                            <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
+                            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <button type="button" class="btn btn-outline-primary me-2 p-0"><a class="nav-link" href="VInicioSesion.aspx">Iniciar Sesión</a></button>
-                        <button type="button" class="btn btn-primary p-0 me-2"><a class="nav-link" href="VRegistro.aspx"><span class="text-white">Registrarse</span></a></button>
-                    </div>
-                </asp:View>
-            </asp:MultiView>
+                </div>
+            </div>
+            <ul class="navbar-nav ms-auto me-1">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" runat="server" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
         <section>
             <div class="container">
-                <span class="h2">Historial de Compras</span>
+                <div class="row mb-3">
+                    <span class="h2 text-center">Historial de Compras</span>
+                </div>
+                <div class="row">
                 <asp:GridView runat="server" ID="GV_Compras" AutoGenerateColumns="False" CssClass="table table-hover table-secondary table-striped table-bordered table-responsive" DataKeyNames="ID">
                     <Columns>
                         <asp:CommandField HeaderText="" ControlStyle-CssClass="btn btn-success bi bi-eye" ItemStyle-Width="50" ShowSelectButton="true" SelectText="" />
@@ -97,6 +73,7 @@
                         </div>
                     </EmptyDataTemplate>
                 </asp:GridView>
+                </div>
             </div>
         </section>
         <footer class="py-4 bg-dark  mt-4 fixed-bottom">

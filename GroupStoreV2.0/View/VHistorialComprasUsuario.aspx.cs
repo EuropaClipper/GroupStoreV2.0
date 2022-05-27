@@ -9,9 +9,9 @@ public partial class View_VHistorialComprasUsuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["usuario"] != null) MV_Estado.ActiveViewIndex = 0;
-        else MV_Estado.ActiveViewIndex = 1;
-        List<EMovimiento> movimientos = new MovimientoDAO().obtenerMovimientosUsuario(((EUsuario)Session["usuario"]).Cedula).Where(x => x.IdTipoMovimiento.Equals(1)).ToList();
+        EUsuario usuarioRegistrado = (EUsuario)Session["usuario"];
+        if (usuarioRegistrado == null || !usuarioRegistrado.Rol.Rol.Contains("Comprador")) Response.Redirect("VInicioSesion.aspx");
+        List<EMovimiento> movimientos = new MovimientoDAO().obtenerMovimientosUsuario(usuarioRegistrado.Cedula).Where(x => x.IdTipoMovimiento.Equals(2)).ToList();
         GV_Compras.DataSource = movimientos;
         GV_Compras.DataBind();
     }

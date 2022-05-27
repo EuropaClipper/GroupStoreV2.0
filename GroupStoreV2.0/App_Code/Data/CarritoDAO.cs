@@ -2,6 +2,15 @@
 using System.Data.Entity;
 public class CarritoDAO
 {
+    public ECarrito insertarCarrito(ECarrito carrito)
+    {
+        using (var db = new Mapeo())
+        {
+            db.Carrito.Add(carrito);
+            db.SaveChanges();
+        }
+        return carrito;
+    }
     public ECarrito obtenerCarrito(string cedulaUsuario)
     {
         using(var db = new Mapeo())
