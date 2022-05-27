@@ -18,6 +18,16 @@ public partial class View_VPedidos : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
+                if (usuarioRegistrado.Rol.Rol.Equals("Administrador"))
+                {
+                    MV_Aside.ActiveViewIndex = 0;
+                    MV_Nav.ActiveViewIndex = 0;
+                }
+                else
+                {
+                    MV_Aside.ActiveViewIndex = 1;
+                    MV_Nav.ActiveViewIndex = 1;
+                }
                 cargarPedidos();
             }
         }
@@ -35,6 +45,8 @@ public partial class View_VPedidos : System.Web.UI.Page
         }
         else
         {
+
+            int numeroVueltas = 1;
             int cont = 0;
             foreach (var movimiento in movimientos)
             {
@@ -48,13 +60,14 @@ public partial class View_VPedidos : System.Web.UI.Page
                     "<br/>" + produtosPedido + " productos cargados</p>" +
                     "<a href=\"VPedido.aspx?mid=" + movimiento.ID + "\" class=\"btn btn-outline-primary\">Ver detalles del pedido</a>" +
                     "</div></div>";
-                if (cont > 1)
+                cont++;
+                if (cont > 3 || (numeroVueltas > 1 && cont == movimientos.Count() % 3) || cont == movimientos.Count())
                 {
-                    filas += "<div class=\"row justify-content-center\">" + tarjetas + "</div>";
+                    filas += "<div class=\"row mb-0 mb-lg-3\">" + tarjetas + "</div>";
                     tarjetas = "";
                     cont = 0;
+                    numeroVueltas++;
                 }
-                cont++;
             }
         }
         tarjetasPedidos.InnerHtml = filas;

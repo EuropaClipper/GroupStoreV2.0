@@ -27,11 +27,15 @@ public partial class View_VHistorialVenta : System.Web.UI.Page
         List<EMovimiento> movimientos;
         if (((EUsuario)Session["usuario"]).Rol.Rol.Equals("Administrador"))
         {
+            MV_Nav.ActiveViewIndex = 0;
+            MV_Aside.ActiveViewIndex = 0;
             EUsuarioNegocio relacion = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(((EUsuario)Session["usuario"]).Cedula);
             movimientos = new MovimientoDAO().obtenerMovimientosNegocio(relacion.NITNegocio).Where(x => x.IdTipoMovimiento.Equals(2)).ToList();
         }
         else
         {
+            MV_Nav.ActiveViewIndex = 1;
+            MV_Aside.ActiveViewIndex = 1;
             movimientos = new MovimientoDAO().obtenerMovimientosUsuario(((EUsuario)Session["usuario"]).Cedula).Where(x => x.IdTipoMovimiento.Equals(2)).ToList();
         }
         foreach (var movimiento in movimientos)

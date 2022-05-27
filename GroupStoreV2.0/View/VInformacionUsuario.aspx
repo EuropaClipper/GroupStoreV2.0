@@ -82,6 +82,32 @@
                 </ul>
             </nav>
         </asp:View>
+        <asp:View runat="server">
+            <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
+                <!-- Navbar Brand-->
+                <a class="navbar-brand ps-3" runat="server" id="A1" href="VProveedor.aspx">Nombre negocio</a>
+                <!-- Navbar Search-->
+                <div class="d-none d-md-block ms-auto"></div>
+                <!-- Navbar-->
+                <ul class="navbar-nav ms-auto ms-md-0 me-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+                            <li><a class="dropdown-item" href="VProveedor.aspx">Ir al inicio</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" runat="server" id="cerrarSesion" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </asp:View>
     </asp:MultiView>
     <form runat="server" class="d-flex flex-column my-5 mx-auto col-11 col-md-10 col-lg-8 shadow rounded-3 bg-white">
         <div class="container-fluid px-md-5 py-3">

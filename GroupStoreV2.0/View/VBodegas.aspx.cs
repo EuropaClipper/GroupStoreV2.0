@@ -28,12 +28,16 @@ public partial class View_VBodegas : System.Web.UI.Page
         List<EBodega> bodegas = new List<EBodega>();
         if (usuarioRegistrado.Rol.Rol == "Administrador")
         {
+            MV_Aside.ActiveViewIndex = 0;
+            MV_Nav.ActiveViewIndex = 0;
             EUsuarioNegocio relacionUsuarioNegocio = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
             ViewState["relacionUsuarioNegocio"] = relacionUsuarioNegocio;
             bodegas = new BodegaDAO().obtenerBodegas(relacionUsuarioNegocio.NITNegocio);
         }
         else
         {
+            MV_Aside.ActiveViewIndex = 1;
+            MV_Nav.ActiveViewIndex = 1;
             bodegas = new BodegaDAO().obtenerBodegas(usuarioRegistrado.Cedula);
         }
         foreach (var bodega in bodegas)

@@ -21,11 +21,15 @@ public partial class View_VProductos : System.Web.UI.Page
         List<EBodega> bodegas;
         if (usuarioRegistrado.Rol.Rol == "Administrador")
         {
+            MV_Nav.ActiveViewIndex = 0;
+            MV_Aside.ActiveViewIndex = 0;
             EUsuarioNegocio relacionUsuarioNegocio = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
             bodegas = new BodegaDAO().obtenerBodegas(relacionUsuarioNegocio.NITNegocio);
         }
         else
         {
+            MV_Nav.ActiveViewIndex = 1;
+            MV_Aside.ActiveViewIndex = 1;
             bodegas = new BodegaDAO().obtenerBodegas(usuarioRegistrado.Cedula);
         }
         ViewState["bodegas"] = bodegas;

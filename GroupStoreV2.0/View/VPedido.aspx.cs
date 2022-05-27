@@ -18,7 +18,17 @@ public partial class View_VPedido : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
-                if(Request.QueryString.Count == 0)
+                if (usuarioRegistrado.Rol.Rol.Equals("Administrador"))
+                {
+                    MV_Aside.ActiveViewIndex = 0;
+                    MV_Nav.ActiveViewIndex = 0;
+                }
+                else
+                {
+                    MV_Aside.ActiveViewIndex = 1;
+                    MV_Nav.ActiveViewIndex = 1;
+                }
+                if (Request.QueryString.Count == 0)
                 {
                     Response.Redirect("VPedidos.aspx");
                 }
@@ -40,7 +50,7 @@ public partial class View_VPedido : System.Web.UI.Page
         fechaP += movimiento.Mes < 10 ? "0" + movimiento.Mes :""+movimiento.Mes;
         fechaP += "/" + movimiento.Anho;
         fecha.InnerText = fechaP;
-        descripcion.InnerText = movimiento.Descripcion;
+        //descripcion.InnerText = movimiento.Descripcion;
         string precioT = detalle.Sum(x => x.Total).ToString("C2");
         precio.InnerText = precioT;
         GV_ListaProductos.DataSource = detalle;

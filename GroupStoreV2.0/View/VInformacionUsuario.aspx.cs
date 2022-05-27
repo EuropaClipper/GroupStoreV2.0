@@ -14,7 +14,17 @@ public partial class View_VInformacionUsuario : System.Web.UI.Page
         {
             EUsuario usuario = new UsuarioDAO().ObtenerUsuarios().Where(x => x.Cedula.Equals(((EUsuario)Session["usuario"]).Cedula)).FirstOrDefault();
             if (usuario.Rol.Rol.Equals("Administrador")) MV_NavUsuarios.ActiveViewIndex = 1;
-            else MV_NavUsuarios.ActiveViewIndex = 0;
+            else
+            {
+                if (usuario.Rol.Rol.Equals("Proveedor"))
+                {
+                    MV_NavUsuarios.ActiveViewIndex = 2;
+                }
+                else
+                {
+                    MV_NavUsuarios.ActiveViewIndex = 0;
+                }
+            }
             cedula.Value = usuario.Cedula;
             cdl2.Value = usuario.Cedula;
             nombre.Value = usuario.Nombres;
@@ -43,7 +53,7 @@ public partial class View_VInformacionUsuario : System.Web.UI.Page
                     tel2.Value = usuario.Telefono;
                     break;
                 case 3:
-                    MV_Usuarios.ActiveViewIndex = 0;
+                    MV_Usuarios.ActiveViewIndex =0;
                     MV_UsuariosModal.ActiveViewIndex = 0;
                     MV_CompProv.ActiveViewIndex = 1;
                     MV_CompProvModal.ActiveViewIndex = 1;
