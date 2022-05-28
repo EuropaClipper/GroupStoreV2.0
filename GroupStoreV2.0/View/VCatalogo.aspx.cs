@@ -94,8 +94,9 @@ public partial class View_VCatalogo : System.Web.UI.Page
         string tarjetaProductos = "";
         string filas = "";
         int cont = 0;
+        int cuantos = 0;
         int numeroVueltas = 1;
-        List<EProducto> productos = (productosCargar == null || productosCargar.Count() == 0) ?new ProductoDAO().obtenerProductos() :productosCargar;
+        List<EProducto> productos = (productosCargar == null || productosCargar.Count() == 0) ?new ProductoDAO().obtenerProductos().Where(x => x.Estado == true).ToList() : productosCargar.Where(x=> x.Estado == true).ToList();
         if(productosCargar != null && productosCargar.Count() == 0)
         {
             
@@ -130,7 +131,8 @@ public partial class View_VCatalogo : System.Web.UI.Page
                        "<a class=\"btn btn-outline-success\" href=\"VCatalogo.aspx?p="+producto.Codigo+"\">Agregar al carrito <i class=\"bi bi-cart-plus\"></i></a>" +
                        "</div></div>";
             cont++;
-            if (cont > 3 || (numeroVueltas > 1 && cont == productos.Count()%4) || cont == productos.Count())
+            cuantos++;
+            if (cont > 3 || (numeroVueltas > 1 && cont == 4) || cont == productos.Count() || cuantos == productos.Count())
             {
                 filas += "<div class=\"row mb-0 mb-lg-3\">" + tarjetaProductos + "</div>";
                 tarjetaProductos = "";
