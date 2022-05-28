@@ -13,7 +13,14 @@ public partial class View_VProductos : System.Web.UI.Page
         {
             Response.Redirect("VInicioSesion.aspx");
         }
-        if(!IsPostBack)cargarProductos();
+        if (!IsPostBack)
+        {
+            EUsuario usuarioRegistrado = (EUsuario)Session["usuario"];
+            cargarProductos();
+            EUsuarioNegocio relacion = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
+            nombreNegocio.InnerText = relacion.Negocio.Nombre;
+            registradoComo.InnerText = usuarioRegistrado.Nombres + " " + usuarioRegistrado.Apellidos;
+        }
     }
     private void cargarProductos()
     {

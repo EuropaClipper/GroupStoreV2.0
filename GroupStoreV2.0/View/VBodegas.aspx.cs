@@ -18,6 +18,9 @@ public partial class View_VBodegas : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
+                EUsuarioNegocio relacion = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
+                nombreNegocio.InnerText = relacion.Negocio.Nombre;
+                registradoComo.InnerText = usuarioRegistrado.Nombres + " " + usuarioRegistrado.Apellidos;
                 cargarBodegas();
             }
         }

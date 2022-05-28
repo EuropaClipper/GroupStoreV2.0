@@ -21,6 +21,8 @@ public partial class View_VProveedor : System.Web.UI.Page
             EUsuarioNegocio relacion = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
             List<EMovimiento> movimientosVentas = new MovimientoDAO().obtenerMovimientosNegocio(relacion.NITNegocio).Where(x => x.TipoMovimiento.Movimiento.Contains("Venta") && x.Estado.Estado.Contains("Pendiente")).ToList();
             numPedidosNuevos.InnerText = "Tiene " + movimientosVentas.Count() + " pedido(s) nuevo(s)";
+            nombreNegocio.InnerText = relacion.Negocio.Nombre;
+            registradoComo.InnerText = usuarioRegistrado.Nombres + " " + usuarioRegistrado.Apellidos;
         }
     }
     protected void cerrarSesion_ServerClick(object sender, EventArgs e)

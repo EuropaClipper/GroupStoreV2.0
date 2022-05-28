@@ -12,8 +12,11 @@ public partial class View_VProducto : System.Web.UI.Page
         if (!IsPostBack)
         {
             if (Session["usuario"] == null) Response.Redirect("VInicioSesion.aspx");
-            cargarDatos();
-            if(Request.QueryString.Count > 0)
+            cargarDatos(); EUsuario usuarioRegistrado = (EUsuario)Session["usuario"];
+            EUsuarioNegocio relacion = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
+            nombreNegocio.InnerText = relacion.Negocio.Nombre;
+            registradoComo.InnerText = usuarioRegistrado.Nombres + " " + usuarioRegistrado.Apellidos;
+            if (Request.QueryString.Count > 0)
             {
                 establecerDatos();
             }
@@ -27,7 +30,7 @@ public partial class View_VProducto : System.Web.UI.Page
     }
     private void establecerDatos()
     {
-        if(Request.QueryString["b"] == "") Response.Redirect("VProducto.aspx");
+        if (Request.QueryString["b"] == "") Response.Redirect("VProducto.aspx");
         string codigoProducto = Request.QueryString["cp"];
         string idBodega = Request.QueryString["b"];
         EProducto producto = new ProductoDAO().obtenerProducto(codigoProducto);
@@ -88,7 +91,7 @@ public partial class View_VProducto : System.Web.UI.Page
         DDL_Bodegas.DataBind();
         //
         //llenar la dropdown list con las categorias de productos
-        List < ECategoria > categorias = new CategoriaDAO().obtenerCategorias().OrderBy(x=> x.Categoria).ToList();
+        List<ECategoria> categorias = new CategoriaDAO().obtenerCategorias().OrderBy(x => x.Categoria).ToList();
         categorias.Insert(0, new ECategoria { ID = 0, Categoria = "Seleccionar" });
         DDL_Categorias.DataSource = categorias;
         DDL_Categorias.DataTextField = "Categoria";
@@ -96,7 +99,7 @@ public partial class View_VProducto : System.Web.UI.Page
         DDL_Categorias.DataBind();
         //
         //llenar el dropdown list de las unidades de medida
-        List<EUnidadMedida> unidades = new UnidadMedidaDAO().obtenerUnidadesMedida().OrderBy(x=>x.Unidad).ToList();
+        List<EUnidadMedida> unidades = new UnidadMedidaDAO().obtenerUnidadesMedida().OrderBy(x => x.Unidad).ToList();
         unidades.Insert(0, new EUnidadMedida { ID = 0, Unidad = "Seleccionar" });
         DDL_UMedida.DataSource = unidades;
         DDL_UMedida.DataTextField = "Unidad";
@@ -107,7 +110,7 @@ public partial class View_VProducto : System.Web.UI.Page
     protected void btn_aggProducto_ServerClick(object sender, EventArgs e)
     {
         string[] imagenes = new string[3];
-        if(FU_Imagenes.PostedFiles.Count() > 3)
+        if (FU_Imagenes.PostedFiles.Count() > 3)
         {
             errorImagenes.Attributes.Add("class", "alert alert-danger d-block mt-1 p-1");
             MensajeError.InnerText = "Solo puede cargar 3 imagenes por producto.";
@@ -154,7 +157,7 @@ public partial class View_VProducto : System.Web.UI.Page
         string codigo = ((EUsuario)Session["usuario"]).Rol.Rol == "Administrador" ? ((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio.Substring(0, 4) : ((EUsuario)Session["usuario"]).Cedula.Substring(0, 4);
         string categoria = (categoriaSeleccionada.Length < 2) ? "0" + categoriaSeleccionada : categoriaSeleccionada.Substring(0, 2);
         //string bodega = (bodegaSeleccionada.Length < 2) ? "0" + bodegaSeleccionada : bodegaSeleccionada.Substring(0, 2);
-        var aleatorio = Guid.NewGuid().ToString().Substring(0,2);
+        var aleatorio = Guid.NewGuid().ToString().Substring(0, 2);
         codigo += categoria + aleatorio + I_nombreProducto.Value.Substring(0, 2).ToUpper() + (existenciasEnBodega + 1).ToString("00000");
         EProducto nuevoProducto = new EProducto
         {
@@ -168,7 +171,7 @@ public partial class View_VProducto : System.Web.UI.Page
             Descripcion = I_Descripcion.Value,
             Estado = true,
             ImagenUno = imagenes[0],
-            ImagenDos = imagenes[1] != null ? imagenes[1]: "~\\Resources\\Pagina\\imagen-no-disponible.jpg",
+            ImagenDos = imagenes[1] != null ? imagenes[1] : "~\\Resources\\Pagina\\imagen-no-disponible.jpg",
             ImagenTres = imagenes[2] != null ? imagenes[2] : "~\\Resources\\Pagina\\imagen-no-disponible.jpg"
         };
         EExistencias relacionBodegaProducto = new EExistencias
@@ -193,12 +196,12 @@ public partial class View_VProducto : System.Web.UI.Page
         bool editado = false;
         EProducto producto = (EProducto)ViewState["producto"];
         //si los campos no estan en blanco y no son iguales a lo que yá se tenía se modifica el campo
-        if(I_nombreProducto.Value != "" && I_nombreProducto.Value != producto.Nombre)
+        if (I_nombreProducto.Value != "" && I_nombreProducto.Value != producto.Nombre)
         {
             producto.Nombre = I_nombreProducto.Value;
             editado = true;
         }
-        if(I_cantidadMax.Value != "" && int.Parse(I_cantidadMax.Value) != producto.CantidadMaxima)
+        if (I_cantidadMax.Value != "" && int.Parse(I_cantidadMax.Value) != producto.CantidadMaxima)
         {
             producto.CantidadMaxima = int.Parse(I_cantidadMax.Value);
             editado = true;
@@ -217,7 +220,7 @@ public partial class View_VProducto : System.Web.UI.Page
         {
             var bodegaSeleccionada = DDL_Bodegas.SelectedItem.Value;
             int bodegaFull = new BodegaDAO().obtenerBodega(bodegaSeleccionada).Capacidad;
-            int existenciTotalEnBodega = new ExistenciasDAO().obtenerExistencias(bodegaSeleccionada).Where(x=> x.CodigoProducto != producto.Codigo).Sum(x => x.Cantidad);
+            int existenciTotalEnBodega = new ExistenciasDAO().obtenerExistencias(bodegaSeleccionada).Where(x => x.CodigoProducto != producto.Codigo).Sum(x => x.Cantidad);
             if (bodegaFull - (existenciTotalEnBodega + int.Parse(I_Stock.Value)) < 0)
             {
                 errorBodegallena.Attributes.Add("class", "alert alert-danger d-block mt-1 p-1");
@@ -236,7 +239,7 @@ public partial class View_VProducto : System.Web.UI.Page
             producto.Capacidad = float.Parse(I_Capacidad.Value);
             editado = true;
         }
-        if(DDL_UMedida.SelectedValue != "0" && DDL_UMedida.SelectedValue != producto.IDUnidadMedida.ToString())
+        if (DDL_UMedida.SelectedValue != "0" && DDL_UMedida.SelectedValue != producto.IDUnidadMedida.ToString())
         {
             producto.IDUnidadMedida = int.Parse(DDL_UMedida.SelectedValue);
             editado = true;
@@ -308,8 +311,8 @@ public partial class View_VProducto : System.Web.UI.Page
             existencia.PrecioPromedio = producto.Precio;
             new ExistenciasDAO().actualizarExistencia(existencia);
             new ProductoDAO().actualizarProducto(producto);
-            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El producto se ha editado correctamente');window.location.href=\"VProducto.aspx?cp="+producto.Codigo
-                +"&b="+producto.IDBodega+"\";</script>");
+            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El producto se ha editado correctamente');window.location.href=\"VProducto.aspx?cp=" + producto.Codigo
+                + "&b=" + producto.IDBodega + "\";</script>");
         }
         else
         {

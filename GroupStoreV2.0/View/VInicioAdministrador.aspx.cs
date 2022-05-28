@@ -23,8 +23,11 @@ public partial class View_VInicioAdministrador : System.Web.UI.Page
                 EUsuarioNegocio relacion = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(usuarioRegistrado.Cedula);
                 nombreNegocio.InnerText = relacion.Negocio.Nombre;
                 registradoComo.InnerText = usuarioRegistrado.Nombres + " " + usuarioRegistrado.Apellidos;
-                int pedidosNuevos = new MovimientoDAO().obtenerMovimientosNegocio(relacion.NITNegocio).Where(x => x.TipoMovimiento.Movimiento.Contains("Venta")).ToList().Count();
+                int pedidosNuevos = new MovimientoDAO().obtenerMovimientosNegocio(relacion.NITNegocio).Where(x => x.TipoMovimiento.Movimiento.Contains("Venta") && x.Estado.Estado.Contains("Pendiente")).ToList().Count();
                 numPedidosNuevos.InnerText = pedidosNuevos != 1 ? "tiene " + pedidosNuevos + " pedidos nuevos." : "tiene " + pedidosNuevos + " pedido nuevo";
+                int pedidosListos = new MovimientoDAO().obtenerMovimientosNegocio(relacion.NITNegocio).Where(x => x.TipoMovimiento.Movimiento.Contains("Venta") && x.Estado.Estado.Contains("Listo")).ToList().Count();
+                numPedidosListos.InnerText = pedidosListos != 1 ? "tiene " + pedidosListos + " pedidos listos." : "tiene " + pedidosListos + " pedido listo";
+
             }
         }
     }

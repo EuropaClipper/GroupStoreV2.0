@@ -43,6 +43,7 @@ public partial class View_VPedido : System.Web.UI.Page
     {
         int idMovimiento = int.Parse(Request.QueryString["mid"]);
         EMovimiento movimiento = new MovimientoDAO().obtenerMovimiento(idMovimiento);
+        ViewState["movimiento"] = movimiento;
         List<EDetalle> detalle = new DetalleDAO().obtenerDetalles(idMovimiento);
         nombre.InnerText = movimiento.Usuario.Nombres + " " + movimiento.Usuario.Apellidos;
         id.InnerText = movimiento.CedulaUsuario;
@@ -61,5 +62,12 @@ public partial class View_VPedido : System.Web.UI.Page
     {
         Session["Usuario"] = null;
         Response.Redirect("VInicioSesion.aspx");
+    }
+
+    protected void btnCambioEstado_ServerClick(object sender, EventArgs e)
+    {
+        EMovimiento movimiento = (EMovimiento)ViewState["movimiento"];
+        movimiento.IDEstado = 2;
+        new MovimientoDAO().actualizarMovimineto(movimiento);
     }
 }

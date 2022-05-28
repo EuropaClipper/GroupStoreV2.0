@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
                                 <div class="card bg-light shadow-sm text-black mb-4">
-                                    <div class="card-body">Tiene # pedidos listos</div>
+                                    <div class="card-body"><span runat="server" id="numPedidosListos"></span></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-secondary stretched-link" href="#">Ver detalles</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
