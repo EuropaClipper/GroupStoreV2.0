@@ -73,7 +73,7 @@ public partial class View_VCarrito : System.Web.UI.Page
 
                 break;
             case "detalles":
-                Response.Redirect("VCarrito.aspx?p=" + e.CommandArgument);
+                Response.Redirect("VDetalleProducto.aspx?p=" + e.CommandArgument);
                 break;
             case "quitar":
                 EDetalleCarrito detalle = new DetallesCarritoDAO().obtenerDetalleCarrito(e.CommandArgument.ToString(),carrito.ID);
@@ -147,5 +147,10 @@ public partial class View_VCarrito : System.Web.UI.Page
     {
         Session["Usuario"] = null;
         Response.Redirect("VInicioSesion.aspx");
+    }
+
+    protected void btnNavbarSearch_ServerClick(object sender, EventArgs e)
+    {
+        Response.Redirect("VCatalogo.aspx?b=" + busqueda.Value.Trim());
     }
 }

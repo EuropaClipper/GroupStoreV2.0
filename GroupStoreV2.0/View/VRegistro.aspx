@@ -20,18 +20,11 @@
             </a>
             <div class="container">
                 <div class="row w-100 justify-content-end p-0 m-0">
-                    <div class="col-12 col-lg-7 ">
-                        <ul class="nav nav-pills justify-content-center ">
-                            <li class="nav-item"><a runat="server" id="A4" class="nav-link" href="VPrincipal.aspx">Inicio</a></li>
-                            <li class="nav-item"><a runat="server" id="A1" class="nav-link">Categorias</a></li>
-                            <li class="nav-item"><a runat="server" id="A2" class="nav-link">Tiendas</a></li>
-                            <li class="nav-item"><a runat="server" id="A3" class="nav-link">Proveedores</a></li>
-                        </ul>
-                    </div>
                     <div class="col-12 col-lg-4">
                         <div class="input-group ">
-                            <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
-                            <button class="btn btn-primary" id="btnNavbarSearch1" type="button"><i class="bi bi-search"></i></button>
+                            <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" runat="server" id="busqueda" />
+                            <button class="btn btn-primary" id="btnNavbarSearch" runat="server" type="button" onserverclick="btnNavbarSearch_ServerClick"><i class="bi bi-search"></i></button>
+
                         </div>
                     </div>
                 </div>

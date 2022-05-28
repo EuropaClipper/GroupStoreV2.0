@@ -21,13 +21,13 @@
             <div class="container">
                 <div class="row w-100 p-0 m-0 ms-auto me-0">
                     <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
-                        <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categorias</a></li>
-                        <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
+                        <li class="nav-item"><a runat="server" id="categoria" class="nav-link" href="VCatalogo.aspx">Catalogo de productos</a></li>
                     </ul>
                     <div class="col-12 col-md-5 ms-auto me-0">
                         <div class="input-group mt-1">
-                            <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
-                            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
+                            <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" runat="server" id="busqueda" />
+                            <button class="btn btn-primary" id="btnNavbarSearch" runat="server" type="button" onserverclick="btnNavbarSearch_ServerClick"><i class="bi bi-search"></i></button>
+
                         </div>
                     </div>
                 </div>

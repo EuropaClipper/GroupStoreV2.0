@@ -40,4 +40,9 @@ public partial class View_VInicioSesion : System.Web.UI.Page
         ETokenRecuperacion tokenRecuperacion = new RecuperacionContrasena().enviarTokenRecuperacion(correo);
         this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('" + tokenRecuperacion.Msj_error + "');window.location.href=\"VInicioSesion.aspx\";</script>");
     }
+
+    protected void btnNavbarSearch_ServerClick(object sender, EventArgs e)
+    {
+        Response.Redirect("VCatalogo.aspx?b=" + busqueda.Value.Trim());
+    }
 }

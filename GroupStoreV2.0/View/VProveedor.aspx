@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Panel de control/Inicio</title>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.min.js"></script>
@@ -83,10 +83,10 @@
                                         <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                         Historial de ventas
                                     </a>
-                                    <a class="nav-link" href="#">
+<%--                                    <a class="nav-link" href="#">
                                         <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                         Reporte de ventas
-                                    </a>
+                                    </a>--%>
                                 </nav>
                             </div>
                             <!---->
@@ -126,18 +126,17 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="bi bi-graph-up me-1"></i>
-                                        <b>Compras / Ventas</b>
+                                        <b>Compras</b>
                                     </div>
                                     <div class="card-body">
-                                        <!--lo planeado es poner un grafico de lineas con las compras y ventas -seria muy bueno que fuera en una sola gráfica -->
-<%--                                        <asp:Chart runat="server" ID="ctl00">
+                                        <asp:Chart runat="server" ID="grafica">
                                             <Series>
-                                                <asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Spline"></asp:Series>
+                                                <asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Column"></asp:Series>
                                             </Series>
                                             <ChartAreas>
                                                 <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                                             </ChartAreas>
-                                        </asp:Chart>--%>
+                                        </asp:Chart>
                                     </div>
                                 </div>
                             </div>

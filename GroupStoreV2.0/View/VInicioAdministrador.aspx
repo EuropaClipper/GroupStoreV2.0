@@ -84,10 +84,10 @@
                                         <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                         Historial de ventas
                                     </a>
-                                    <a class="nav-link" href="#">
+<%--                                    <a class="nav-link" href="#">
                                         <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                         Reporte de ventas
-                                    </a>
+                                    </a>--%>
                                 </nav>
                             </div>
                             <!---->
@@ -103,10 +103,10 @@
                                         <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                         Historial de compras
                                     </a>
-                                    <a class="nav-link" href="#">
+<%--                                    <a class="nav-link" href="#">
                                         <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                         Reporte de compras
-                                    </a>
+                                    </a>--%>
                                 </nav>
                             </div>
                             <!---->
@@ -122,10 +122,10 @@
                                         <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
                                         Ver proveedores
                                     </a>
-                                    <a class="nav-link" href="#">
+<%--                                    <a class="nav-link" href="#">
                                         <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                         Reporte de proveedores
-                                    </a>
+                                    </a>--%>
                                 </nav>
                             </div>
                             <!---->

@@ -22,14 +22,13 @@
                 <asp:View runat="server">
                     <div class="container">
                         <div class="row w-100 p-0 m-0 ms-auto me-0">
-                            <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
-                                <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categorias</a></li>
-                                <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
-                            </ul>
+                        <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
+                            <li class="nav-item"><a runat="server" id="categoria" class="nav-link" href="VCatalogo.aspx">Catalogo de productos</a></li>
+                        </ul>
                             <div class="col-12 col-md-5 ms-auto me-0">
                                 <div class="input-group mt-1">
-                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
-                                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
+                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" runat="server" id="busqueda" />
+                                    <button class="btn btn-primary" id="btnNavbarSearch" runat="server"  type="button" onserverclick="btnNavbarSearch_ServerClick"><i class="bi bi-search"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -61,13 +60,9 @@
                 <asp:View runat="server">
                     <div class="container">
                         <div class="row w-100 justify-content-end p-0 m-0">
-                            <div class="col-12 col-lg-7 ">
-                                <ul class="nav nav-pills justify-content-center justify-content-lg-end">
-                                    <li class="nav-item"><a runat="server" id="A1" class="nav-link">Categorias</a></li>
-                                    <li class="nav-item"><a runat="server" id="A2" class="nav-link">Tiendas</a></li>
-                                    <li class="nav-item"><a runat="server" id="A3" class="nav-link">Proveedores</a></li>
-                                </ul>
-                            </div>
+                            <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
+                                <li class="nav-item"><a runat="server" id="A1" href="VCatalogo.aspx" class="nav-link">Catalogo de productos</a></li>
+                            </ul>
                             <div class="col-12 col-lg-4">
                                 <div class="input-group ">
                                     <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
@@ -132,7 +127,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" runat="server" id="pr1">Titulo de la card</h5>
                                             <p runat="server" id="dsc1"></p>
-                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                            <a href="#" class="btn btn-primary" runat="server" id="link1">Ver información</a>
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +137,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" runat="server" id="pr2">Titulo de la card</h5>
                                             <p runat="server" id="dsc2"></p>
-                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                            <a href="#" class="btn btn-primary" runat="server" id="link2">Ver información</a>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +147,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" runat="server" id="pr3">Titulo de la card</h5>
                                             <p runat="server" id="dsc3"></p>
-                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                            <a href="#" class="btn btn-primary" runat="server" id="link3">Ver información</a>
                                         </div>
                                     </div>
                                 </div>
@@ -168,7 +163,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" runat="server" id="pr4">Titulo de la card</h5>
                                             <p runat="server" id="dsc4"></p>
-                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                            <a href="#" class="btn btn-primary" runat="server" id="link4">Ver información</a>
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +173,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" runat="server" id="pr5">Titulo de la card</h5>
                                             <p runat="server" id="dsc5"></p>
-                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                            <a href="#" class="btn btn-primary" runat="server" id="link5">Ver información</a>
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +183,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" runat="server" id="pr6">Titulo de la card</h5>
                                             <p runat="server" id="dsc6"></p>
-                                            <a href="VInicioSesion.aspx" class="btn btn-primary">Ver información</a>
+                                            <a href="#" class="btn btn-primary" runat="server" id="link6">Ver información</a>
                                         </div>
                                     </div>
                                 </div>

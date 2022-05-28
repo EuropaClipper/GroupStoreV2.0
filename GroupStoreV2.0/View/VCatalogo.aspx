@@ -22,18 +22,22 @@
                 <asp:View runat="server">
                     <div class="container">
                         <div class="row w-100 p-0 m-0 ms-auto me-0">
-                            <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
-                                <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categorias</a></li>
-                                <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
-                            </ul>
+                                <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
+                                    <li class="nav-item"><a runat="server" id="A2" href="VCatalogo.aspx" class="nav-link">Catalogo de productos</a></li>
+                                </ul>
                             <div class="col-12 col-md-5 ms-auto me-0">
                                 <div class="input-group mt-1">
-                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
-                                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
+                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" runat="server" id="busqueda" />
+                                    <button class="btn btn-primary" id="btnNavbarSearch" runat="server"  type="button" onserverclick="btnNavbarSearch_ServerClick"><i class="bi bi-search"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <a href="VCarrito.aspx" class="text-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                    </a>
                     <ul class="navbar-nav ms-auto me-1">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,13 +60,9 @@
                 <asp:View runat="server">
                     <div class="container">
                         <div class="row w-100 justify-content-end p-0 m-0">
-                            <div class="col-12 col-lg-7 ">
-                                <ul class="nav nav-pills justify-content-center justify-content-lg-end">
-                                    <li class="nav-item"><a runat="server" id="A1" class="nav-link">Categorias</a></li>
-                                    <li class="nav-item"><a runat="server" id="A2" class="nav-link">Tiendas</a></li>
-                                    <li class="nav-item"><a runat="server" id="A3" class="nav-link">Proveedores</a></li>
-                                </ul>
-                            </div>
+                            <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
+                                <li class="nav-item"><a runat="server" id="A1" href="VCatalogo.aspx" class="nav-link">Catalogo de productos</a></li>
+                            </ul>
                             <div class="col-12 col-lg-4">
                                 <div class="input-group ">
                                     <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
@@ -114,7 +114,7 @@
                 <div class="container-fluid pt-1 pb-4" runat="server" id="contenedorProductos"></div>
             </div>
         </div>
-        <footer class="py-4 bg-dark  mt-4">
+        <footer class="py-4 bg-dark  mt-5">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
                     <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>

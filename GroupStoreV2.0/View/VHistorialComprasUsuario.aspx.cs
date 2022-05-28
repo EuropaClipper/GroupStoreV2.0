@@ -20,4 +20,9 @@ public partial class View_VHistorialComprasUsuario : System.Web.UI.Page
         Session["Usuario"] = null;
         Response.Redirect("VInicioSesion.aspx");
     }
+
+    protected void btnNavbarSearch_ServerClick(object sender, EventArgs e)
+    {
+        Response.Redirect("VCatalogo.aspx?b=" + busqueda.Value.Trim());
+    }
 }

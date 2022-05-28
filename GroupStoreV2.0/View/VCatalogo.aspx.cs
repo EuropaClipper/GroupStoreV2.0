@@ -15,6 +15,13 @@ public partial class View_VCatalogo : System.Web.UI.Page
             else MV_Estado.ActiveViewIndex = 1;
             if (Request.QueryString.Count > 0)
             {
+                string busqueda = Request.QueryString["b"];
+                if(busqueda != null)
+                {
+                    List<EProducto> productosFiltrados = new ProductoDAO().filtrarProductos(busqueda, "", "", "0");
+                    cargarDatos(productosFiltrados);
+                    return;
+                }
                 string codigoProducto = Request.QueryString["p"];
                 if (codigoProducto == null)
                 {
@@ -165,5 +172,12 @@ public partial class View_VCatalogo : System.Web.UI.Page
     {
         Session["Usuario"] = null;
         Response.Redirect("VInicioSesion.aspx");
+    }
+
+    protected void btnNavbarSearch_ServerClick(object sender, EventArgs e)
+    {
+        string producto = busqueda.Value.Trim();
+        List<EProducto> productosFiltrados = new ProductoDAO().filtrarProductos(producto, "", "", "0");
+        cargarDatos(productosFiltrados);
     }
 }

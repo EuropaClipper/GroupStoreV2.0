@@ -158,4 +158,9 @@ public partial class View_VRegistro : System.Web.UI.Page
         this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Registro exitoso');window.location.href=\"VInicioSesion.aspx\";</script>");
     }
 
+
+    protected void btnNavbarSearch_ServerClick(object sender, EventArgs e)
+    {
+        Response.Redirect("VCatalogo.aspx?b=" + busqueda.Value.Trim());
+    }
 }

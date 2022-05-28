@@ -19,11 +19,13 @@ public partial class View_VPrincipal : System.Web.UI.Page
         imagenes = new string[6];
         nombres = new string[6];
         descripciones = new string[6];
+        string[] codigos = new string[6];
         int i = 0;
         foreach (var producto in productos)
         {
             if (i < 6)
             {
+                codigos[i] = producto.Codigo;
                 imagenes[i] = producto.ImagenUno;
                 nombres[i] = producto.Nombre;
                 descripciones[i] = producto.Descripcion;
@@ -48,10 +50,21 @@ public partial class View_VPrincipal : System.Web.UI.Page
         dsc4.InnerText = descripciones[3];
         dsc5.InnerText = descripciones[4];
         dsc6.InnerText = descripciones[5];
+        link1.HRef = "VDetalleProducto.aspx?p="+ codigos[0];
+        link2.HRef = "VDetalleProducto.aspx?p=" + codigos[1];
+        link3.HRef = "VDetalleProducto.aspx?p=" + codigos[2];
+        link4.HRef = "VDetalleProducto.aspx?p=" + codigos[3];
+        link5.HRef = "VDetalleProducto.aspx?p=" + codigos[4];
+        link6.HRef = "VDetalleProducto.aspx?p=" + codigos[5];
     }
     protected void cerrarSesion_ServerClick(object sender, EventArgs e)
     {
         Session["Usuario"] = null;
         Response.Redirect("VInicioSesion.aspx");
+    }
+
+    protected void btnNavbarSearch_ServerClick(object sender, EventArgs e)
+    {
+        Response.Redirect("VCatalogo.aspx?b=" + busqueda.Value.Trim());
     }
 }

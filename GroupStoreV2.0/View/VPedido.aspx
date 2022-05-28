@@ -14,7 +14,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-<asp:MultiView ActiveViewIndex="0" runat="server" ID="MV_Nav">
+        <asp:MultiView ActiveViewIndex="0" runat="server" ID="MV_Nav">
             <asp:View runat="server">
                 <nav class="py-3 navbar navbar-expand navbar-dark bg-dark">
                     <!-- Navbar Brand-->
@@ -84,7 +84,7 @@
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
-                                        <asp:MultiView ActiveViewIndex="0" runat="server" ID="MV_Aside">
+                    <asp:MultiView ActiveViewIndex="0" runat="server" ID="MV_Aside">
                         <asp:View runat="server">
                             <div class="sb-sidenav-menu">
                                 <div class="nav">
@@ -122,10 +122,10 @@
                                                 <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                                 Historial de ventas
                                             </a>
-                                            <a class="nav-link" href="#">
+                                            <%--                                            <a class="nav-link" href="#">
                                                 <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                                 Reporte de ventas
-                                            </a>
+                                            </a>--%>
                                         </nav>
                                     </div>
                                     <!---->
@@ -141,10 +141,10 @@
                                                 <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                                 Historial de compras
                                             </a>
-                                            <a class="nav-link" href="#">
+                                            <%--                                            <a class="nav-link" href="#">
                                                 <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                                 Reporte de compras
-                                            </a>
+                                            </a>--%>
                                         </nav>
                                     </div>
                                     <!---->
@@ -160,10 +160,10 @@
                                                 <div class="sb-nav-link-icon"><i class="bi bi-eye"></i></div>
                                                 Ver proveedores
                                             </a>
-                                            <a class="nav-link" href="#">
+                                            <%--                                            <a class="nav-link" href="#">
                                                 <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                                 Reporte de proveedores
-                                            </a>
+                                            </a>--%>
                                         </nav>
                                     </div>
                                     <!---->
@@ -207,10 +207,10 @@
                                                 <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
                                                 Historial de ventas
                                             </a>
-                                            <a class="nav-link" href="#">
+                                            <%--                                            <a class="nav-link" href="#">
                                                 <div class="sb-nav-link-icon"><i class="bi bi-clipboard-data"></i></div>
                                                 Reporte de ventas
-                                            </a>
+                                            </a>--%>
                                         </nav>
                                     </div>
                                     <!---->
