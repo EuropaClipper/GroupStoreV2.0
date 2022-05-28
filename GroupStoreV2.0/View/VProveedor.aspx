@@ -142,16 +142,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="bi bi-table me-1"></i>
-                                <b>Clientes frecuentes</b>
-                            </div>
-                            <div class="card-body">
-                                <!--aquí puede ir la grid view-->
-
-                            </div>
-                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-dark mt-auto">

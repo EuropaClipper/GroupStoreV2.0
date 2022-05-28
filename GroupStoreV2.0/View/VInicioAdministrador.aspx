@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Panel de control/Inicio</title>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../Scripts/bootstrap.min.js"></script>
@@ -168,27 +168,25 @@
                                         <b>Compras / Ventas</b>
                                     </div>
                                     <div class="card-body">
-                                        <!--lo planeado es poner un grafico de lineas con las compras y ventas -seria muy bueno que fuera en una sola gráfica -->
-<%--                                        <asp:Chart runat="server" ID="ctl00">
+                                        <asp:Chart runat="server" ID="graficaCompras">
                                             <Series>
-                                                <asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Spline"></asp:Series>
+                                                <asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Column"></asp:Series>
                                             </Series>
                                             <ChartAreas>
                                                 <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                                             </ChartAreas>
-                                        </asp:Chart>--%>
+                                        </asp:Chart>
+                                        <!--lo planeado es poner un grafico de lineas con las compras y ventas -seria muy bueno que fuera en una sola gráfica -->
+                                        <asp:Chart runat="server" ID="grafica">
+                                            <Series>
+                                                <asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Column"></asp:Series>
+                                            </Series>
+                                            <ChartAreas>
+                                                <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                                            </ChartAreas>
+                                        </asp:Chart>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="bi bi-table me-1"></i>
-                                <b>Clientes frecuentes</b>
-                            </div>
-                            <div class="card-body">
-                                <!--aquí puede ir la grid view-->
-
                             </div>
                         </div>
                     </div>
