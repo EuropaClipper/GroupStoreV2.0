@@ -11,7 +11,73 @@
     <title>Catalogo de productos</title>
 </head>
 <body>
-    <form id="form1" class="py-4" runat="server">
+    <form id="form1" class="pb-4" runat="server">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark position-sticky sticky-top py-4 mb-5">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand text-light d-none d-md-block ms-2 me-0" href="VPrincipal.aspx">
+                <i class="bi bi-shop-window"></i>
+                GroupStore
+            </a>
+            <asp:MultiView ID="MV_Estado" runat="server">
+                <asp:View runat="server">
+                    <div class="container">
+                        <div class="row w-100 p-0 m-0 ms-auto me-0">
+                            <ul class="nav nav-pills col-12 col-md-7 justify-content-center">
+                                <li class="nav-item"><a runat="server" id="categoria" class="nav-link">Categorias</a></li>
+                                <li class="nav-item"><a runat="server" id="tiendas" class="nav-link">Tiendas</a></li>
+                            </ul>
+                            <div class="col-12 col-md-5 ms-auto me-0">
+                                <div class="input-group mt-1">
+                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
+                                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto me-1">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="VInformacionUsuario.aspx">Ver info. de usuario</a></li>
+                                <li><a class="dropdown-item" href="VHistorialComprasUsuario.aspx">Historial de Compras</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" runat="server" onserverclick="cerrarSesion_ServerClick">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </asp:View>
+                <asp:View runat="server">
+                    <div class="container">
+                        <div class="row w-100 justify-content-end p-0 m-0">
+                            <div class="col-12 col-lg-7 ">
+                                <ul class="nav nav-pills justify-content-center justify-content-lg-end">
+                                    <li class="nav-item"><a runat="server" id="A1" class="nav-link">Categorias</a></li>
+                                    <li class="nav-item"><a runat="server" id="A2" class="nav-link">Tiendas</a></li>
+                                    <li class="nav-item"><a runat="server" id="A3" class="nav-link">Proveedores</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="input-group ">
+                                    <input type="search" class="form-control form-control-dark" placeholder="Buscar un producto..." aria-label="Search" />
+                                    <button class="btn btn-primary" id="btnNavbarSearch1" type="button"><i class="bi bi-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <button type="button" class="btn btn-outline-primary me-2 p-0"><a class="nav-link" href="VInicioSesion.aspx">Iniciar Sesión</a></button>
+                        <button type="button" class="btn btn-primary p-0 me-2"><a class="nav-link" href="VRegistro.aspx"><span class="text-white">Registrarse</span></a></button>
+                    </div>
+                </asp:View>
+            </asp:MultiView>
+        </nav>
         <div class="container-fluid col-12 col-lg-11 mx-auto shadow-lg">
             <div class="row">
                 <p class="h1 text-center">Catalogo de productos</p>
@@ -28,8 +94,8 @@
                 <div class="mb-1 mb-lg-0 col-12 col-lg-3">
                     <div class="input-group">
                         <span class="input-group-text">Precio</span>
-                        <input type="number" class="form-control" placeholder="Mínimo" runat="server" id="i_minimo"/>
-                        <input type="number" class="form-control" placeholder="Máximo" runat="server" id="i_maximo"/>
+                        <input type="number" class="form-control" placeholder="Mínimo" runat="server" id="i_minimo" />
+                        <input type="number" class="form-control" placeholder="Máximo" runat="server" id="i_maximo" />
                     </div>
                 </div>
                 <div class="mb-1 mb-lg-0 col-12 col-lg-3">
@@ -48,22 +114,18 @@
                 <div class="container-fluid pt-1 pb-4" runat="server" id="contenedorProductos"></div>
             </div>
         </div>
+        <footer class="py-4 bg-dark  mt-4">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Diseñado por GroupStore</div>
+                    <div>
+                        <a href="#">Politica de privacidad</a>
+                        &middot;
+                                <a href="#">Terminos &amp; Condiciones</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </form>
-    <script>
-        function agregarCantidad() {
-            var cantidad = document.getElementById("cantidadProducto").innerText;
-            document.getElementById("cantidadProducto").innerText = parseInt(cantidad) + 1;
-        }
-        function quitarCantidad() {
-            var cantidad = parseInt(document.getElementById("cantidadProducto").innerText);
-            if (cantidad <= 1) {
-                document.getElementById("cantidadProducto").innerText = 1;
-            }
-            else {
-                document.getElementById("cantidadProducto").innerText = cantidad - 1;
-            }
-
-        }
-    </script>
 </body>
 </html>

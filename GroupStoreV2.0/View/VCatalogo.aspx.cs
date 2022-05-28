@@ -11,6 +11,8 @@ public partial class View_VCatalogo : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            if (Session["usuario"] != null) MV_Estado.ActiveViewIndex = 0;
+            else MV_Estado.ActiveViewIndex = 1;
             if (Request.QueryString.Count > 0)
             {
                 string codigoProducto = Request.QueryString["p"];
@@ -158,5 +160,10 @@ public partial class View_VCatalogo : System.Web.UI.Page
         }
         List <EProducto> productosFiltrados = new ProductoDAO().filtrarProductos(nombre, minimo, maximo, categoria);
         cargarDatos(productosFiltrados);
+    }
+    protected void cerrarSesion_ServerClick(object sender, EventArgs e)
+    {
+        Session["Usuario"] = null;
+        Response.Redirect("VInicioSesion.aspx");
     }
 }

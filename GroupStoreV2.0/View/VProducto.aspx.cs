@@ -70,11 +70,15 @@ public partial class View_VProducto : System.Web.UI.Page
         List<EBodega> bodegas = new List<EBodega>();
         if (((EUsuario)Session["usuario"]).Rol.Rol == "Administrador")
         {
+            MV_Aside.ActiveViewIndex = 0;
+            MV_Nav.ActiveViewIndex = 0;
             ViewState["relacionUsuarioNegocio"] = new UsuarioNegocioDAO().obtenerRelacionUsuarioNegocio(((EUsuario)Session["usuario"]).Cedula);
             bodegas = new BodegaDAO().obtenerBodegas(((EUsuarioNegocio)ViewState["relacionUsuarioNegocio"]).NITNegocio).OrderBy(x => x.Nombre).ToList();
         }
         else
         {
+            MV_Aside.ActiveViewIndex = 1;
+            MV_Nav.ActiveViewIndex = 1;
             bodegas = new BodegaDAO().obtenerBodegas(((EUsuario)Session["usuario"]).Cedula).OrderBy(x => x.Nombre).ToList();
         }
         bodegas.Insert(0, (new EBodega { ID = "0", Nombre = "Seleccionar" }));

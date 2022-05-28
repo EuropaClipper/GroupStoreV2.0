@@ -143,4 +143,9 @@ public partial class View_VCarrito : System.Web.UI.Page
         new CarritoDAO().eliminarCarrito(usuarioRegistrado.Cedula);
         cargarDatos();
     }
+    protected void cerrarSesion_ServerClick(object sender, EventArgs e)
+    {
+        Session["Usuario"] = null;
+        Response.Redirect("VInicioSesion.aspx");
+    }
 }
